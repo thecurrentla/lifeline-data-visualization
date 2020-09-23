@@ -4,20 +4,76 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% set css %}
-      {% include "css/main.css" %}
+    {% include "css/reset.css" %}
+    {% include "css/main.css" %}
     {% endset %}
     <style>
-      {{ css | cssmin | safe }}
+      {{css | cssmin | safe}}
     </style>
     <title>{{ title }}</title>
   </head>
-  <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
+  <body {% if bodyClass %} class="{{ bodyClass }}" {% endif %}>
     <div class="container">
-      {% include "header.njk" %}
-      {{ content | safe }}
+      <div class="graphs">
+        <div class="graph">
+          {%- for item in call_counts -%}
+            {% set health = item.COVID + item.Health %}
+            {% set food = item.Food %}
+            {% set housing = item.Housing %}
+            {% set money = item.Work + item.Financial %}
+            <div class="line" style="--health: {{ health }}; --food: {{ food }}; --housing: {{ housing }}; --money: {{ money }}; --total: {{ item.Total }};">
+              <div class="line__display"></div>
+              <div class="line__date">{{ item.Date }}</div>
+              <div class="line__count">
+                <span class="visually-hidden">{{ item.Date }}:
+                </span>
+                <span class="count count-health">{{ health }}</span>
+                <span class="count count-food">{{ food }}</span>
+                <span class="count count-housing">{{ housing }}</span>
+                <span class="count count-money">{{ money }}</span>
+                <span class="count count-total">{{ item.Total }}</span>
+                <span class="visually-hidden">
+                  Calls</span>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <main>
+        <nav>
+          <button class="button button-health" onclick="document.body.setAttribute('class', 'graph-health')">Health</button>
+          <button class="button button-food" onclick="document.body.setAttribute('class', 'graph-food')">Food</button>
+          <button class="button button-housing" onclick="document.body.setAttribute('class', 'graph-housing')">Housing</button>
+          <button class="button button-money" onclick="document.body.setAttribute('class', 'graph-money')">Money</button>
+          <button class="button button-total" onclick="document.body.setAttribute('class', 'graph-total')">All</button>
+        </nav>
+        <div class="data">
+          {%- for call in calls -%}
+            <div class="call call-{{ call.Date }}">
+              <strong>{{ call.Date }}</strong>
+              <p>{{ call.Text }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script>
+      $(window).on('scroll', function () {
+        var ws = $(window).scrollTop(),
+          wd = $(document).height(),
+          wc = $(window).height();
+        var scrollPercent = (ws / (wd - wc)) * 100;
+        console.log(scrollPercent);
+
+        var gs = $(".graph").scrollTop(),
+          gd = $(".graph").height(),
+          gc = $(window).height();
+        var graphScrollPercent = (gs / (gd - gc)) * 100;
+        console.log(graphScrollPercent);
+
+        //$('.graph').scrollTop(graphScrollPercent);
+      });
+    </script>
   </body>
 </html>
-
-
-
