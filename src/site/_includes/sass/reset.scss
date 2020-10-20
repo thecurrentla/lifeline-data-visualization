@@ -1,5 +1,5 @@
-@charset "UTF-8";
 /* A modified version of my "modern reset" https://github.com/hankchizljaw/modern-css-reset */
+
 /* Box sizing rules */
 *,
 *::before,
@@ -75,6 +75,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
 /* content made available only to screen readers */
 .visually-hidden {
   position: absolute;
@@ -88,4 +89,5 @@ select {
   white-space: nowrap;
 }
 
-/*# sourceMappingURL=reset.css.map */
+:root {
+}

@@ -1,0 +1,19 @@
+.layout-wrapper {
+	display: flex;
+	flex-flow: row nowrap;
+	overflow-x: hidden;
+}
+.layout-wrapper > * {
+	flex-basis: 50%;
+}
+
+.container {
+	overflow-x: hidden;
+	padding: 4rem 0.5rem;
+}
+.graph-container {
+	order: 1;
+}
+.content-container {
+	order: 2;
+}

@@ -1,0 +1,7 @@
+**/bower_components/
+**/node_modules/
+**/vendor/
+**/public/
+**/*.min.css
+**/*.min.js
+**/*.njk

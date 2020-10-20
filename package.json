@@ -1,13 +1,19 @@
 {
-  "name": "eleventy-example-google-sheets-data",
+  "name": "lifeline-data-visualization",
   "version": "0.0.1",
-  "description": "An example of sourcing data from Google Sheets for use in Eleventy at build time",
-  "author": "Phil Hawksworth",
+  "description": "",
+  "author": "Cory Birdsong",
   "license": "MIT",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
-    "build": "cross-env ELEVENTY_ENV=prod eleventy",
+    "start": "npm run seed && npm run dev",
+    "dev": "npm-run-all --parallel dev:sass dev:11ty",
+    "dev:sass": "sass --load-path=node_modules --watch src/site/_includes/sass:src/site/_includes/css",
+    "dev:css": "postcss src/site/_includes/css/*.css --dir src/site/_includes/css/dist --watch --map --use autoprefixer",
+    "dev:11ty": "cross-env ELEVENTY_ENV=dev eleventy --serve",
+    "build": "npm-run-all build:sass build:11ty",
+    "build:sass": "sass --load-path=node_modules src/site/_includes/sass:src/site/_includes/css",
+    "build:css": "postcss src/site/_includes/css/*.css --dir src/site/_includes/css/dist --map --use autoprefixer cssnano",
+    "build:11ty": "cross-env ELEVENTY_ENV=prod eleventy",
     "seed": "cross-env ELEVENTY_ENV=seed eleventy"
   },
   "repository": {
@@ -15,14 +21,20 @@
     "url": "https://github.com/philhawksworth/example-read-from-sheets"
   },
   "dependencies": {
-    "@11ty/eleventy": "^0.8.3",
-    "autoprefixer": "^9.8.6",
-    "axios": "^0.19.2",
+    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-cache-assets": "^2.0.3",
+    "a11y-dialog": "^5.4.1",
+    "autoprefixer": "^10.0.1",
+    "axios": "^0.20.0",
     "cssnano": "^4.1.10",
+    "dayjs": "^1.9.3",
     "gsap": "^3.5.1",
-    "html-minifier": "^4.0.0"
+    "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.2",
+    "sass": "^1.26.10"
   },
   "devDependencies": {
-    "cross-env": "^5.2.1"
+    "cross-env": "^7.0.2"
   }
 }

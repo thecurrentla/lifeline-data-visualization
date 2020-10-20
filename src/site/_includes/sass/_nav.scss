@@ -1,0 +1,71 @@
+.switcher-nav {
+	// position: fixed;
+	// top: 0;
+	// left: 50%;
+	// right: 0;
+	// z-index: 100;
+
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-evenly;
+
+	padding: 0.5rem;
+}
+
+.switcher-nav > * {
+	margin: 0.5rem;
+}
+
+.switcher-nav button {
+	-webkit-appearance: none;
+	appearance: none;
+	border-width: 0;
+	border-radius: 2px;
+
+	color: white;
+	background-color: $text-color;
+	background-color: var(--text-color);
+
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0.75rem 1.5rem;
+
+	&:hover,
+	&:active,
+	&:focus {
+		outline-color: $text-color;
+		outline-color: var(--text-color);
+		background-color: $accent-color;
+		background-color: var(--accent-color);
+	}
+}
+.switcher-nav button.active {
+	box-shadow: 0 0 0 0.5rem $text-color;
+	box-shadow: 0 0 0 0.5rem var(--text-color);
+	outline-color: $text-color;
+	outline-color: var(--text-color);
+	background-color: $accent-color;
+	background-color: var(--accent-color);
+}
+
+// =========================================
+// Overlay
+
+.overlay-nav {
+	position: fixed;
+	top: 0;
+	left: calc(50% - 1rem);
+	right: 0;
+	bottom: 0;
+	z-index: 666;
+
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.9);
+	backdrop-filter: blur(2px);
+}
+
+// =========================================

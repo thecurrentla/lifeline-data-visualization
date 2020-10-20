@@ -1,4 +1,4 @@
 ---
 title: Example
-layout: default
+layout: base
 ---

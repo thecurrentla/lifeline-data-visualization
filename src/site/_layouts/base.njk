@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ title }}</title>
+    {% set css %}
+    {% include "css/reset.css" %}
+    {% include "css/main.css" %}
+    {% endset %}
+    <style>
+      {{css | safe}}
+    </style>
+  </head>
+  <body class="lifeline">
+    <div class="dialog-container" id="my-accessible-dialog" aria-hidden="true" hidden="hidden">
+      <nav class="overlay-nav" id="overlay-nav">
+        {% for category in categories %}
+          <button class="button category-{{ category.slug }} js-modal-close" data-category="{{ category.slug }}">
+            {{ category.name }}
+          </button>
+        {% endfor %}
+      </nav>
+    </div>
+    <nav class="switcher-nav">
+      {% for category in categories %}
+        <button class="button category-{{ category.slug }} js-modal-close" data-category="{{ category.slug }}">
+          {{ category.name }}
+        </button>
+      {% endfor %}
+      {# <button class="button button-modal js-modal" data-modal-content-id="overlay-nav">
+        Switch Category
+      </button> #}
+    </nav>
+    <div class="layout-wrapper">
+      <main class="container scrollable-container content-container">
+        <div class="content">
+          {%- for category in categories -%}
+            <section class="category category-{{ category.slug }}" data-category="{{ category.slug }}">
+              <div class="card-group">
+                {%- for item in entries -%}
+                  {%- if item.category == category.name -%}
+                    <article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+                      {% if item.type == 'call' %}
+                        <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
+                          <span class="date">{{ item.date_medium }}</span>
+                          {% if item.time %}
+                            <span class="time">{{ item.time }}</span>
+                          {% endif %}
+                        </div>
+                        <div class="card--{{ item.type }}__content">
+                          <p>{{ item.text }}</p>
+                        </div>
+                        <div class="card--{{ item.type }}__meta card--{{ item.type }}__footer">
+                          <span>
+                            <small>D:</small>
+                            {{ item.length | int }}
+                            min.</span>
+                          <span>
+                            <small>L:</small>
+                            {{ item.parish }}
+                            Parish.</span>
+                        </div>
+                      {% endif %}
+                      {% if item.type == 'news' %}
+                        <div class="card--{{ item.type }}__title">
+                          <strong>{{ item.headline }}</strong>
+                        </div>
+                        <div class="card--{{ item.type }}__content">
+                          <p>
+                            {% if item.dateline %}
+                              <span class="dateline">
+                                {{ item.dateline }}
+                                ({{ item.date_medium }}) –
+                              </span>
+                            {% endif %}
+                            {{ item.text }}
+                          </p>
+                        </div>
+                        <div class="card--{{ item.type }}__link">
+                          via
+                          <a href="{{item.sourceurl}}">{{ item.sourcename }}</a>
+                        </div>
+                      {% endif %}
+                    </article>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </section>
+          {%- endfor -%}
+        </div>
+      </main>
+      <div class="container scrolless-container graph-container">
+        <div class="graph" style="--count-total: {{ stat_totals.largest }}">
+          {%- for item in stats -%}
+            <div class="line">
+              <div class="line__date line__text">
+                <span class="date">{{ item.date_short }}</span>
+                <strong class="day">{{ item.day | truncate(1, true, "") }}</strong>
+              </div>
+              {% for category in categories %}
+                {% if category.slug == "health" %}
+                  {% set amount = item.health %}
+                {% endif %}
+                {% if category.slug == "food" %}
+                  {% set amount = item.food %}
+                {% endif %}
+                {% if category.slug == "housing" %}
+                  {% set amount = item.housing %}
+                {% endif %}
+                {% if category.slug == "financial" %}
+                  {% set amount = item.financial %}
+                {% endif %}
+                <div class="line__display category-{{ category.slug }}" style="--count: {{ amount }};" data-count="{{ amount }}">
+                  <span class="visually-hidden">
+                    {{ item.date_long }},
+                    {{ category.name }}:
+                    {{ amount }}
+                    Calls
+                  </span>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    {# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"></script> #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+
+    <script>
+      document
+        .querySelectorAll('button[data-category]')
+        .forEach(function (button) {
+          button.addEventListener('click', function (event) {
+            var category = event.target.dataset.category;
+            document
+              .querySelectorAll('[data-category].active')
+              .forEach(function (item) {
+                item
+                  .classList
+                  .remove("active");
+
+              });
+            document
+              .querySelectorAll('[data-category="' + category + '"]')
+              .forEach(function (item) {
+                item
+                  .classList
+                  .add("active");
+              });
+
+            document.body.dataset.activeCategory = category;
+
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+// =========================================
+// Fonts
+
+$font-family-main: -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+	Helvetica, Arial, sans-serif;
+
+$font-family-mono: "SF Mono", "Roboto Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro",
+	monospace;
+$font-size-mono: 0.8rem;
+
+// =========================================
+// Colors
+
+$text-color: hsla(0, 0%, 30%, 1);
+$accent-color: hsla(0, 0%, 60%, 1);
+
+$text-color-health: hsla(0, 75%, 35%, 1);
+$accent-color-health: hsla(0, 75%, 50%, 1);
+
+$text-color-food: hsl(40, 100%, 35%);
+$accent-color-food: hsla(40, 100%, 50%, 1);
+
+$text-color-housing: hsla(240, 100%, 35%, 1);
+$accent-color-housing: hsla(240, 100%, 50%, 1);
+
+$text-color-financial: hsla(120, 100%, 15%, 1);
+$accent-color-financial: hsla(120, 100%, 30%, 1);
+
+:root {
+	--text-color: hsla(0, 0%, 30%, 1);
+	--accent-color: hsla(0, 0%, 60%, 1);
+
+	--text-color-health: hsla(0, 75%, 35%, 1);
+	--accent-color-health: hsla(0, 75%, 50%, 1);
+	--accent-color-health-hsl: 0, 75%, 50%;
+
+	--text-color-food: hsl(40, 100%, 35%);
+	--accent-color-food: hsla(40, 100%, 50%, 1);
+	--accent-color-food-hsl: 40, 100%, 50%;
+
+	--text-color-housing: hsla(240, 100%, 35%, 1);
+	--accent-color-housing: hsla(240, 100%, 50%, 1);
+	--accent-color-housing-hsl: 240, 100%, 50%;
+
+	--text-color-financial: hsla(120, 100%, 15%, 1);
+	--accent-color-financial: hsla(120, 100%, 30%, 1);
+	--accent-color-financial-hsl: 120, 100%, 25%;
+}

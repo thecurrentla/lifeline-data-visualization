@@ -1,0 +1,59 @@
+a {
+	color: var(--link-color);
+}
+a:hover {
+	color: var(--link-color-hover);
+}
+a:focus {
+	color: var(--link-color-hover);
+}
+a:active {
+	color: var(--link-color-hover);
+}
+a:hover,
+a:focus,
+a:active {
+	filter: saturate(150%);
+}
+
+a,
+button {
+	@include transition-basic;
+}
+
+// =========================================
+// Swatches
+
+.category-health {
+	--text-color: #{$text-color-health};
+	--accent-color: hsla(0, 75%, 50%, var(--accent-opacity, 1));
+}
+.category-food {
+	--text-color: #{$text-color-food};
+	--accent-color: hsla(40, 100%, 50%, var(--accent-opacity, 1));
+}
+.category-housing {
+	--text-color: #{$text-color-housing};
+	--accent-color: hsla(240, 100%, 50%, var(--accent-opacity, 1));
+}
+.category-financial {
+	--text-color: #{$text-color-financial};
+	--accent-color: hsla(120, 100%, 25%, var(--accent-opacity, 1));
+}
+
+[data-active-category="health"] .category-health {
+	--line-opacity: 1;
+	--card-transform: 0;
+}
+[data-active-category="food"] .category-food {
+	--line-opacity: 1;
+	--card-transform: 0;
+}
+[data-active-category="housing"] .category-housing {
+	--line-opacity: 1;
+	--card-transform: 0;
+}
+[data-active-category="financial"] .category-financial {
+	--line-opacity: 1;
+	--card-transform: 0;
+}
