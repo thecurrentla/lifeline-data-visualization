@@ -290,6 +290,8 @@ button {
   height: 2ch;
   --date-width: 9ch;
   padding-left: var(--date-width);
+  --number-width: 4ch;
+  padding-right: var(--number-width);
   font-size: 0.8rem;
   font-family: "SF Mono", "Roboto Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
   line-height: 1;

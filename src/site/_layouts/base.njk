@@ -68,12 +68,10 @@
                         </div>
                         <div class="card--{{ item.type }}__content">
                           <p>
-                            {% if item.dateline %}
-                              <span class="dateline">
-                                {{ item.dateline }}
-                                ({{ item.date_medium }}) –
-                              </span>
-                            {% endif %}
+                            <span class="dateline">
+                              {{ item.dateline }}
+                              ({{ item.date_medium }}) –
+                            </span>
                             {{ item.text }}
                           </p>
                         </div>
@@ -113,7 +111,6 @@
                 {% endif %}
                 <div class="line__display category-{{ category.slug }}" style="--count: {{ amount }};" data-count="{{ amount }}">
                   <span class="visually-hidden">
-                    {{ item.date_long }},
                     {{ category.name }}:
                     {{ amount }}
                     Calls
