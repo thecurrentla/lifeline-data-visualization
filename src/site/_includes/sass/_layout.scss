@@ -12,6 +12,9 @@
 }
 .lifeline-header {
 	align-items: flex-start;
+
+	> * {
+	}
 }
 .lifeline-footer {
 	align-items: flex-end;

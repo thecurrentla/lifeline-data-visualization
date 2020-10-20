@@ -4,8 +4,7 @@ const seed = require("../../../utils/save-seed.js");
 const parse_date = require("../../../utils/parse-date.js");
 
 const sheetID = "18q-im3-O1-vlCj7XT5TaFkBzocnFWvyBV7XTtyTcqoU";
-const tabIDs = ["onyp2mz", "od6", "otnj332", "ovy9w99"];
-// const tabIDs = ["oe0qcby", "ok7deqw"];
+const tabIDs = ["onyp2mz"];
 
 module.exports = () => {
 	var requests = [];
@@ -25,11 +24,8 @@ module.exports = () => {
 				const labels = Object.keys(row);
 				const values = Object.values(row);
 
-				if (row.gsx$date && row.gsx$time) {
-					var item = parse_date(row.gsx$date.$t, row.gsx$time.$t);
-				} else {
-					var item = parse_date(row.gsx$date.$t);
-				}
+				var category = row.gsx$category;
+				var item = new Object();
 
 				for (var key in labels) {
 					if (labels.hasOwnProperty(key)) {
@@ -43,9 +39,7 @@ module.exports = () => {
 				// console.log(item);
 				// console.log(typeof item);
 
-				if (item["date_num"] != "Invalid Date") {
-					entries.push(item);
-				}
+				entries.push(item);
 			});
 		});
 
@@ -54,7 +48,7 @@ module.exports = () => {
 			if (a.date_num < b.date_num) return -1;
 		});
 
-		seed(JSON.stringify(entries), `${__dirname}/../dev/entries.json`);
+		seed(JSON.stringify(entries), `${__dirname}/../dev/summaries.json`);
 		return entries;
 	});
 };

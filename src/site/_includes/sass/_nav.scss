@@ -46,13 +46,6 @@ button {
 	justify-content: flex-end;
 
 	padding: 0.5rem;
-
-	button.category-intro:not(.active) {
-	}
-	button.category-intro.active {
-		opacity: 0;
-		box-shadow: none;
-	}
 }
 
 .lifeline-header-nav > * {

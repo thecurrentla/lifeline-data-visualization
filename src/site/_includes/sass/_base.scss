@@ -41,23 +41,32 @@ button {
 	--accent-color: hsla(120, 100%, 25%, var(--accent-opacity, 1));
 }
 
-[data-active-category="intro"] .category-intro {
+.lifeline-wrapper[data-active-category*="intro"] .category-intro {
 	--line-opacity: 1;
 	--card-transform: 0;
+	--description-display: block;
 }
-[data-active-category="health"] .category-health {
+
+.lifeline-wrapper[data-active-category="health"] .category-health {
 	--line-opacity: 1;
 	--card-transform: 0;
+	--description-display: block;
 }
-[data-active-category="food"] .category-food {
+
+.lifeline-wrapper[data-active-category="food"] .category-food {
 	--line-opacity: 1;
 	--card-transform: 0;
+	--description-display: block;
 }
-[data-active-category="housing"] .category-housing {
+
+.lifeline-wrapper[data-active-category="housing"] .category-housing {
 	--line-opacity: 1;
 	--card-transform: 0;
+	--description-display: block;
 }
-[data-active-category="financial"] .category-financial {
+
+.lifeline-wrapper[data-active-category="financial"] .category-financial {
 	--line-opacity: 1;
 	--card-transform: 0;
+	--description-display: block;
 }

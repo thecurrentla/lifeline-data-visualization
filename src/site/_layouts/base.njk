@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="https://thecurrentla.com/wp-content/themes/paperback-child/editor.css">
+    {# <link rel="stylesheet" href="https://thecurrentla.com/wp-content/themes/paperback-child/editor.css"> #}
     {% set css %}
     {% include "css/reset.css" %}
     {% include "css/main.css" %}
@@ -13,158 +13,171 @@
       {{css | safe}}
     </style>
   </head>
-  <body class="lifeline" data-active-category="intro">
-    <header class="lifeline-header">
-      <h1>Main Title</h1>
-      <nav class="lifeline-header-nav" aria-label="Main Menu">
-        <button class="button category-intro active" data-category="intro">
-          About
-        </button>
-        {% for category in categories %}
-          <button class="button category-{{ category.slug }} visually-hidden" data-category="{{ category.slug }}">
-            {{ category.name }}
+  <body>
+    <div class="lifeline lifeline-wrapper" data-active-category="intro">
+      <header class="lifeline-header">
+        <div class="lifeline-header-text">
+          <h1>{{ title }}</h1>
+          {% for summary in summaries %}
+            <p hidden="hidden" class="lifeline-header-description category-{{ summary.category | lower }}" data-active-category="{{ summary.category | lower }}">{{ summary.text }}</p>
+          {% endfor %}
+        </div>
+        <nav class="lifeline-header-nav" aria-label="Main Menu">
+          <button class="button category-intro active" data-category="intro">
+            About
           </button>
-        {% endfor %}
-      </nav>
-    </header>
-    <div class="layout-wrapper">
-      <main class="container scrollable-container content-container">
-        <div class="content">
-          <section class="category category-intro active" data-category="intro">
-            <article class="card-group">
-              <div class="card card--intro">
-                <div class="card--intro__text">
-                  <h2>Intro Headline</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam illa ardentis amores excitaret sui! Cur tandem? Hoc est non dividere, sed frangere. Ergo adhuc, quantum equidem intellego, causa non videtur fuisse mutandi nominis. Est enim effectrix multarum et magnarum voluptatum.</p>
-                  <p>At, illa, ut vobis placet, partem quandam tuetur, reliquam deserit. Hanc ergo intuens debet institutum illud quasi signum absolvere. Sit, inquam, tam facilis, quam vultis, comparatio voluptatis, quid de dolore dicemus?
-                  </p>
-                </div>
-
-                <nav class="intro-nav" aria-label="Categories">
-                  {% for category in categories %}
-                    <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
-                      {{ category.name }}
-                    </button>
-                  {% endfor %}
-                </nav>
-              </div>
-            </article>
-          </section>
-          {%- for category in categories -%}
-            <section class="category category-{{ category.slug }}" data-category="{{ category.slug }}">
-              <h2 class="visually-hidden">{{ category.name }}</h2>
-              <div class="card-group">
-                {%- for item in entries -%}
-                  {%- if item.category == category.name -%}
-                    <article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
-                      {% if item.type == 'note' %}
-                        <div class="card--{{ item.type }}__title">
-                          {{ item.date_medium }}:
-                          <strong>{{ item.title }}</strong>
-                        </div>
-                        <div class="card--{{ item.type }}__content">
-                          <p>
-                            {{ item.text }}
-                          </p>
-                        </div>
-                      {% endif %}
-                      {% if item.type == 'call' %}
-                        <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
-                          <span class="date">{{ item.date_medium }}</span>
-                          {% if item.time %}
-                            <span class="time">{{ item.time }}</span>
-                          {% endif %}
-                        </div>
-                        <div class="card--{{ item.type }}__content">
-                          <p>{{ item.text }}</p>
-                        </div>
-                        <div class="card--{{ item.type }}__meta card--{{ item.type }}__footer">
-                          <span>
-                            <small>D:</small>
-                            {{ item.length | int }}
-                            min.</span>
-                          <span>
-                            <small>L:</small>
-                            {{ item.parish }}
-                            Parish.</span>
-                        </div>
-                      {% endif %}
-                      {% if item.type == 'news' %}
-                        <div class="card--{{ item.type }}__title">
-                          <strong>{{ item.headline }}</strong>
-                        </div>
-                        <div class="card--{{ item.type }}__content">
-                          <p>
-                            <span class="dateline">
-                              {{ item.dateline }}
-                              ({{ item.date_medium }}) –
-                            </span>
-                            {{ item.text }}
-                          </p>
-                        </div>
-                        <div class="card--{{ item.type }}__link">
-                          via
-                          <a href="{{item.sourceurl}}">{{ item.sourcename }}</a>
-                        </div>
-                      {% endif %}
-                    </article>
-                  {%- endif -%}
+          {% for category in categories %}
+            <button class="button category-{{ category.slug }} visually-hidden" data-category="{{ category.slug }}">
+              {{ category.name }}
+            </button>
+          {% endfor %}
+        </nav>
+      </header>
+      <div class="layout-wrapper">
+        <main class="container content-container">
+          <div class="scrollable-wrapper-outer">
+            <div class="scrollable-wrapper-inner">
+              <div class="content">
+                <section class="category category-intro active" data-category="intro">
+                  <nav class="intro-nav" aria-label="Categories">
+                    {% for category in categories %}
+                      <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
+                        {{ category.name }}
+                      </button>
+                    {% endfor %}
+                  </nav>
+                </section>
+                {%- for category in categories -%}
+                  <section class="category category-{{ category.slug }}" data-category="{{ category.slug }}">
+                    <h2 class="visually-hidden">{{ category.name }}</h2>
+                    <div class="card-group">
+                      {%- for item in entries -%}
+                        {%- if item.category == category.name or item.category == "All" -%}
+                          <article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+                            {% if item.type == 'intro' %}
+                              {% if item.title %}
+                                <div class="card--{{ item.type }}__title">
+                                  <strong>{{ item.title }}</strong>
+                                </div>
+                              {% endif %}
+                              <div class="card--{{ item.type }}__content">
+                                <p>
+                                  {{ item.text }}
+                                </p>
+                              </div>
+                              <hr/>
+                            {% endif %}
+                            {% if item.type == 'note' %}
+                              <div class="card--{{ item.type }}__title">
+                                {{ item.date_medium }}:
+                                <strong>{{ item.title }}</strong>
+                              </div>
+                              <div class="card--{{ item.type }}__content">
+                                <p>
+                                  {{ item.text }}
+                                </p>
+                              </div>
+                            {% endif %}
+                            {% if item.type == 'call' %}
+                              <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
+                                <span class="date">{{ item.date_medium }}</span>
+                                {% if item.time %}
+                                  <span class="time">{{ item.time }}</span>
+                                {% endif %}
+                                {% if item.parish %}
+                                  <span class="parish">
+                                    {{ item.parish }}
+                                    Parish
+                                  </span>
+                                {% endif %}
+                              </div>
+                              <div class="card--{{ item.type }}__content">
+                                <p>{{ item.text }}</p>
+                              </div>
+                              <div class="card--{{ item.type }}__meta card--{{ item.type }}__footer">
+                                <span>
+                                  <small>Duration:</small>
+                                  {{ item.length | int }}
+                                  min.</span>
+                              </div>
+                            {% endif %}
+                            {% if item.type == 'news' %}
+                              <div class="card--{{ item.type }}__title">
+                                <strong>{{ item.headline }}</strong>
+                              </div>
+                              <div class="card--{{ item.type }}__content">
+                                <p>
+                                  <strong class="dateline">
+                                    {{ item.date_medium }}
+                                  </strong>
+                                  –
+                                  {{ item.text }}
+                                </p>
+                              </div>
+                              <div class="card--{{ item.type }}__link">
+                                via
+                                <a href="{{item.sourceurl}}">{{ item.sourcename }}</a>
+                              </div>
+                            {% endif %}
+                          </article>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  </section>
                 {%- endfor -%}
               </div>
-            </section>
-          {%- endfor -%}
-        </div>
-      </main>
-      <div class="container scrolless-container graph-container">
-        <div class="graph" style="--count-total: {{ stat_totals.largest }}">
-          {%- for item in stats -%}
-            <div class="line">
-              <div class="line__date line__text">
-                <span class="date">{{ item.date_short }}</span>
-                <strong class="day">{{ item.day | truncate(1, true, "") }}</strong>
-              </div>
-              {% for category in categories %}
-                {% if category.slug == "health" %}
-                  {% set amount = item.health %}
-                {% endif %}
-                {% if category.slug == "food" %}
-                  {% set amount = item.food %}
-                {% endif %}
-                {% if category.slug == "housing" %}
-                  {% set amount = item.housing %}
-                {% endif %}
-                {% if category.slug == "financial" %}
-                  {% set amount = item.financial %}
-                {% endif %}
-                <div class="line__display category-{{ category.slug }}" style="--count: {{ amount }};" data-count="{{ amount }}">
-                  <span class="visually-hidden">
-                    {{ category.name }}:
-                    {{ amount }}
-                    Calls
-                  </span>
-                </div>
-              {%- endfor -%}
             </div>
-          {%- endfor -%}
+          </div>
+        </main>
+        <div class="container scrolless-container graph-container">
+          <div class="graph" style="--count-total: {{ stat_totals.largest }}">
+            {%- for item in stats -%}
+              <div class="line">
+                <div class="line__date line__text">
+                  <span class="date">{{ item.date_short }}</span>
+                  <strong class="day">{{ item.day | truncate(1, true, "") }}</strong>
+                </div>
+                {% for category in categories %}
+                  {% if category.slug == "health" %}
+                    {% set amount = item.health %}
+                  {% endif %}
+                  {% if category.slug == "food" %}
+                    {% set amount = item.food %}
+                  {% endif %}
+                  {% if category.slug == "housing" %}
+                    {% set amount = item.housing %}
+                  {% endif %}
+                  {% if category.slug == "financial" %}
+                    {% set amount = item.financial %}
+                  {% endif %}
+                  <div class="line__display category-{{ category.slug }}" style="--count: {{ amount }};" data-count="{{ amount }}">
+                    <span class="visually-hidden">
+                      {{ category.name }}:
+                      {{ amount }}
+                      Calls
+                    </span>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+          </div>
         </div>
       </div>
-    </div>
 
-    <footer class="lifeline-footer">
-      <div class="footer-content text-small">
-        <p>Quam illa ardentis amores excitaret sui! Cur tandem? Hoc est non dividere, sed frangere. Ergo adhuc, quantum equidem intellego, causa non videtur fuisse mutandi nominis. Est enim effectrix multarum et magnarum voluptatum.</p>
-      </div>
-      <nav class="lifeline-footer-nav" aria-label="Categories">
-        {% for category in categories %}
-          <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
-            {{ category.name }}
-          </button>
-        {% endfor %}
-      </nav>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+      <footer class="lifeline-footer">
+        <div class="footer-content text-small">
+          <p>Quam illa ardentis amores excitaret sui! Cur tandem? Hoc est non dividere, sed frangere. Ergo adhuc, quantum equidem intellego, causa non videtur fuisse mutandi nominis. Est enim effectrix multarum et magnarum voluptatum.</p>
+        </div>
+        <nav class="lifeline-footer-nav" aria-label="Categories">
+          {% for category in categories %}
+            <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
+              {{ category.name }}
+            </button>
+          {% endfor %}
+        </nav>
+      </footer>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    {# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"></script> #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
     <script>
@@ -173,6 +186,7 @@
         .forEach(function (button) {
           button.addEventListener('click', function (event) {
             var category = event.target.dataset.category;
+
             document
               .querySelectorAll('[data-category].active')
               .forEach(function (item) {
@@ -188,8 +202,11 @@
                   .classList
                   .add("active");
               });
-
-            document.body.dataset.activeCategory = category;
+            document
+              .querySelectorAll('.lifeline')
+              .forEach(function (item) {
+                item.dataset.activeCategory = category;
+              });
 
           });
         });
