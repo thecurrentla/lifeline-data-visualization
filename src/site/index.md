@@ -1,4 +1,4 @@
 ---
-title: Example
+title: Lifeline
 layout: base
 ---
