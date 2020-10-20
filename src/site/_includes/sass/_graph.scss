@@ -23,9 +23,6 @@
 
 	font-weight: 500;
 }
-.line + .line {
-	margin-top: 2px;
-}
 
 .line__display {
 	grid-column: 1 / var(--count);
