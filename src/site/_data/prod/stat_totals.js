@@ -40,16 +40,13 @@ module.exports = () => {
 
 								var current_value = parseInt(totals[prop]);
 
-								console.log(prop);
+								// console.log(prop);
 
-								console.log(current_value);
-								console.log(typeof current_value);
-								console.log(new_value);
-								console.log(typeof new_value);
+								// console.log(current_value);
+								// console.log(typeof current_value);
+								// console.log(new_value);
+								// console.log(typeof new_value);
 
-								// totals[prop] = values[key].$t;
-								// if (!labels[key] in totals) {
-								// }
 								if (current_value < new_value) {
 									totals[prop] = new_value;
 								}

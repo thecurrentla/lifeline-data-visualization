@@ -41,6 +41,10 @@ button {
 	--accent-color: hsla(120, 100%, 25%, var(--accent-opacity, 1));
 }
 
+[data-active-category="intro"] .category-intro {
+	--line-opacity: 1;
+	--card-transform: 0;
+}
 [data-active-category="health"] .category-health {
 	--line-opacity: 1;
 	--card-transform: 0;
