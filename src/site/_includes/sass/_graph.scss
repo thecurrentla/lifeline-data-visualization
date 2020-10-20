@@ -57,6 +57,9 @@
 	padding-left: 0.5em;
 	line-height: 1.33;
 	font-weight: bold;
+	opacity: 0;
+
+	@include transition-basic;
 }
 .line {
 	&:hover,

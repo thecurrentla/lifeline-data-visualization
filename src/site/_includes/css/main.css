@@ -326,6 +326,10 @@ button {
   padding-left: 0.5em;
   line-height: 1.33;
   font-weight: bold;
+  opacity: 0;
+  transition-property: color, background-color, border-color, text-decoration-color, box-shadow, transform, filter, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
 }
 
 .line:hover .line__display:after, .line:active .line__display:after, .line:focus .line__display:after {
