@@ -13,6 +13,11 @@
 .lifeline-header {
 	align-items: flex-start;
 
+	h1 {
+		margin: 0;
+		font-style: 3rem;
+	}
+
 	> * {
 	}
 }
