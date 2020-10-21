@@ -1,0 +1,23 @@
+<article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+  <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
+    <span class="date">{{ item.date_medium }}</span>
+    {% if item.time %}
+      <span class="time">{{ item.time }}</span>
+    {% endif %}
+    {% if item.parish %}
+      <span class="parish">
+        {{ item.parish }}
+        Parish
+      </span>
+    {% endif %}
+  </div>
+  <div class="card--{{ item.type }}__content">
+    <p>{{ item.text }}</p>
+  </div>
+  <div class="card--{{ item.type }}__meta card--{{ item.type }}__footer">
+    <span>
+      <small>Length:</small>
+      {{ item.length | int }}
+      min.</span>
+  </div>
+</article>

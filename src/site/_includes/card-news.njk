@@ -1,0 +1,20 @@
+<article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+  <div class="card--{{ item.type }}__title">
+    <div class="dateline">
+      {{ item.date_medium }}
+    </div>
+    <strong>{{ item.headline }}</strong>
+  </div>
+  {% if item.text %}
+    <div class="card--{{ item.type }}__content">
+      <p>
+        {{ item.text }}
+      </p>
+    </div>
+  {% endif %}
+  {% if item.sourceurl and item.sourcename %}
+    <div class="card--{{ item.type }}__link">
+      <a href="{{item.sourceurl}}">{{ item.sourcename }}</a>
+    </div>
+  {% endif %}
+</article>

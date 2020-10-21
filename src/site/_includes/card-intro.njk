@@ -1,0 +1,12 @@
+<article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+  {% if item.title %}
+    <div class="card--{{ item.type }}__title">
+      <strong>{{ item.title }}</strong>
+    </div>
+  {% endif %}
+  <div class="card--{{ item.type }}__content">
+    <p>
+      {{ item.text }}
+    </p>
+  </div>
+</article>

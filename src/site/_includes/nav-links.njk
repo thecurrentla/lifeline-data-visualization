@@ -1,0 +1,5 @@
+{% for category in categories %}
+  <a class="button category-{{ category.slug }}" href="#{{ category.slug }}" data-category="{{ category.slug }}">
+    {{ category.name }}
+  </a>
+{% endfor %}

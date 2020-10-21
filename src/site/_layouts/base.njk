@@ -16,106 +16,48 @@
   <body>
     <div class="lifeline lifeline-wrapper" data-active-category="intro">
       <header class="lifeline-header">
-        <div class="lifeline-header-text">
+        <div class="lifeline-header-title">
           <h1>{{ title }}</h1>
         </div>
-        <nav class="lifeline-header-nav" aria-label="Main Menu">
-          <button class="button category-intro active" data-category="intro">
-            About
-          </button>
-          {% for category in categories %}
-            <button class="button category-{{ category.slug }} visually-hidden" data-category="{{ category.slug }}">
-              {{ category.name }}
-            </button>
-          {% endfor %}
+
+        {% for summary in summaries %}
+          {% if summary.category == "Intro" %}
+            <div class="lifeline-header-text">
+              <p>{{ summary.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+        <nav class="lifeline-nav" aria-label="Main Menu">
+          {% include "nav-links.njk" %}
         </nav>
       </header>
+      <div class="category-desc-wrapper">
+        {% for category in categories %}
+          {% for summary in summaries %}
+            {% if summary.category == category.name %}
+              <div class="category-desc category-{{ category.slug }}" data-category="{{ category.slug }}" id="{{category.slug}}">
+                <div class="category-desc-title">
+                  <h2>{{ category.name }}</h2>
+                </div>
+                <div class="category-desc-text">
+                  <p>{{ summary.text }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
       <div class="layout-wrapper">
         <main class="container content-container">
           <div class="scrollable-wrapper-outer">
             <div class="scrollable-wrapper-inner">
               <div class="content">
-                <section class="category category-intro active" data-category="intro">
-                  <article class="card card--intro category-intro">
-                    {% for summary in summaries %}
-                      {% if summary.category == "Intro" %}
-                        <div class="card--intro__content">
-                          <p>{{ summary.text }}</p>
-                        </div>
-                      {% endif %}
-                    {% endfor %}
-                    <nav class="intro-nav" aria-label="Categories">
-                      {% for category in categories %}
-                        <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
-                          {{ category.name }}
-                        </button>
-                      {% endfor %}
-                    </nav>
-                  </article>
-                </section>
                 {%- for category in categories -%}
                   <section class="category category-{{ category.slug }}" data-category="{{ category.slug }}">
-                    <h2 class="visually-hidden">{{ category.name }}</h2>
                     <div class="card-group">
                       {%- for item in entries -%}
                         {%- if item.category == category.name or item.category == "All" -%}
-                          <article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
-                            {% if item.type == 'intro' %}
-                              {% if item.title %}
-                                <div class="card--{{ item.type }}__title">
-                                  <strong>{{ item.title }}</strong>
-                                </div>
-                              {% endif %}
-                              <div class="card--{{ item.type }}__content">
-                                <p>
-                                  {{ item.text }}
-                                </p>
-                              </div>
-                            {% endif %}
-                            {% if item.type == 'call' %}
-                              <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
-                                <span class="date">{{ item.date_medium }}</span>
-                                {% if item.time %}
-                                  <span class="time">{{ item.time }}</span>
-                                {% endif %}
-                                {% if item.parish %}
-                                  <span class="parish">
-                                    {{ item.parish }}
-                                    Parish
-                                  </span>
-                                {% endif %}
-                              </div>
-                              <div class="card--{{ item.type }}__content">
-                                <p>{{ item.text }}</p>
-                              </div>
-                              <div class="card--{{ item.type }}__meta card--{{ item.type }}__footer">
-                                <span>
-                                  <small>Length:</small>
-                                  {{ item.length | int }}
-                                  min.</span>
-                              </div>
-                            {% endif %}
-                            {% if item.type == 'news' or item.type == 'note' %}
-                              <div class="card--{{ item.type }}__title">
-                                <div class="dateline">
-                                  {{ item.date_medium }}
-                                </div>
-                                <strong>{{ item.headline }}</strong>
-                              </div>
-                              {% if item.text %}
-                                <div class="card--{{ item.type }}__content">
-                                  <p>
-                                    {{ item.text }}
-                                  </p>
-                                </div>
-                              {% endif %}
-                              {% if item.sourceurl and item.sourcename %}
-                                <div class="card--{{ item.type }}__link">
-                                  <a href="{{item.sourceurl}}">{{ item.sourcename }}</a>
-                                </div>
-                              {% endif %}
-                            {% endif %}
-                          </article>
+                          {% include "card-" ~ item.type ~ ".njk" %}
                         {%- endif -%}
                       {%- endfor -%}
                     </div>
@@ -165,11 +107,7 @@
           <p>Quam illa ardentis amores excitaret sui! Cur tandem? Hoc est non dividere, sed frangere. Ergo adhuc, quantum equidem intellego, causa non videtur fuisse mutandi nominis. Est enim effectrix multarum et magnarum voluptatum.</p>
         </div>
         <nav class="lifeline-footer-nav" aria-label="Categories">
-          {% for category in categories %}
-            <button class="button category-{{ category.slug }}" data-category="{{ category.slug }}">
-              {{ category.name }}
-            </button>
-          {% endfor %}
+          {% include "nav-links.njk" %}
         </nav>
       </footer>
     </div>
@@ -177,35 +115,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
     <script>
-      document
-        .querySelectorAll('button[data-category]')
-        .forEach(function (button) {
-          button.addEventListener('click', function (event) {
-            var category = event.target.dataset.category;
-
-            document
-              .querySelectorAll('[data-category].active')
-              .forEach(function (item) {
-                item
-                  .classList
-                  .remove("active");
-
-              });
-            document
-              .querySelectorAll('[data-category="' + category + '"]')
-              .forEach(function (item) {
-                item
-                  .classList
-                  .add("active");
-              });
-            document
-              .querySelectorAll('.lifeline')
-              .forEach(function (item) {
-                item.dataset.activeCategory = category;
-              });
+      function setActiveCategory(category) {
+        document
+          .querySelectorAll('[data-category].active')
+          .forEach(function (item) {
+            item
+              .classList
+              .remove("active");
 
           });
+        document
+          .querySelectorAll('[data-category="' + category + '"]')
+          .forEach(function (item) {
+            item
+              .classList
+              .add("active");
+          });
+        document
+          .querySelectorAll('.lifeline')
+          .forEach(function (item) {
+            item.dataset.activeCategory = category;
+          });
+      }
+
+      document
+        .querySelectorAll('a[href][data-category]')
+        .forEach(function (button) {
+          button.addEventListener('click', function (event) {
+            setActiveCategory(event.target.dataset.category);
+          });
         });
+      if (window.location.hash) {
+        setActiveCategory(window.location.hash);
+      }
     </script>
   </body>
 </html>

@@ -1,6 +1,10 @@
 @import "variables";
 @import "mixins";
 
+:root {
+	scroll-margin-top: 1rem;
+}
+
 .lifeline {
 	font-family: $font-family-main;
 }

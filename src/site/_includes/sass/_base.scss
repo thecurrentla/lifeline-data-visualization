@@ -15,6 +15,9 @@ a:focus,
 a:active {
 	filter: saturate(150%);
 }
+a.button {
+	text-decoration: none;
+}
 
 a,
 button {
@@ -44,29 +47,25 @@ button {
 .lifeline-wrapper[data-active-category*="intro"] .category-intro {
 	--line-opacity: 1;
 	--card-transform: 0;
-	--description-display: block;
+	--intro-display: block;
 }
-
 .lifeline-wrapper[data-active-category="health"] .category-health {
 	--line-opacity: 1;
 	--card-transform: 0;
-	--description-display: block;
+	--intro-display: block;
 }
-
 .lifeline-wrapper[data-active-category="food"] .category-food {
 	--line-opacity: 1;
 	--card-transform: 0;
-	--description-display: block;
+	--intro-display: block;
 }
-
 .lifeline-wrapper[data-active-category="housing"] .category-housing {
 	--line-opacity: 1;
 	--card-transform: 0;
-	--description-display: block;
+	--intro-display: block;
 }
-
 .lifeline-wrapper[data-active-category="financial"] .category-financial {
 	--line-opacity: 1;
 	--card-transform: 0;
-	--description-display: block;
+	--intro-display: block;
 }
