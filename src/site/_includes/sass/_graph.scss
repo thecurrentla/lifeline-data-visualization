@@ -57,9 +57,8 @@
 	content: attr(data-count);
 	display: inline-block;
 	position: absolute;
-	top: auto;
+	top: 12.5%;
 	left: 0;
-	bottom: auto;
 
 	@media screen and (min-width: 992px) {
 		left: 100%;
