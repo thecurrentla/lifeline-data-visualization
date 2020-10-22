@@ -1,25 +1,56 @@
-a {
-	color: var(--ll-link-color);
-}
-a:hover {
-	color: var(--ll-link-color-hover);
-}
-a:focus {
-	color: var(--ll-link-color-hover);
-}
-a:active {
-	color: var(--ll-link-color-hover);
-}
-a:hover,
-a:focus,
-a:active {
-	filter: saturate(150%);
-}
-a.button {
-	text-decoration: none;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
-a,
+a {
+	color: var(--ll-link-color);
+	&:hover,
+	&:active,
+	&:focus {
+		color: var(--ll-link-color-hover);
+		filter: saturate(150%);
+	}
+}
+
+a.button[href],
 button {
+	-webkit-appearance: none;
+	appearance: none;
+	text-decoration: none;
+
+	border-width: 0;
+	padding: 0.75rem 1.5rem;
+
+	color: white;
+	background-color: $text-color;
+	background-color: var(--ll-text-color);
+	border-radius: 2px;
+
+	font-size: 1.15rem;
+	font-weight: bold;
+	text-transform: uppercase;
 	@include transition-basic;
+
+	&:hover,
+	&:active,
+	&:focus {
+		outline-color: $text-color;
+		outline-color: var(--ll-text-color);
+		background-color: $accent-color;
+		background-color: var(--ll-accent-color);
+	}
+}
+a.button[href],
+button {
+	&.active {
+		box-shadow: 0 0 0 0.25rem $text-color;
+		box-shadow: 0 0 0 0.25rem var(--ll-text-color);
+		outline-color: $text-color;
+		outline-color: var(--ll-text-color);
+		background-color: $accent-color;
+		background-color: var(--ll-accent-color);
+	}
 }

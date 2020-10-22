@@ -62,17 +62,13 @@
 	z-index: 2;
 	flex-basis: auto;
 	padding-top: 1rem;
-	mix-blend-mode: screen;
-	@media screen and (min-width: 992px) {
-		mix-blend-mode: normal;
-	}
 }
 
 .column-graph {
 	flex-basis: 20%;
 	z-index: 1;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 992px) {
 		padding-top: 2rem;
 	}
 	@media screen and (min-width: 1200px) {

@@ -1,4 +1,4 @@
-a.button,
+a.button[href],
 button {
 	-webkit-appearance: none;
 	appearance: none;
@@ -24,7 +24,7 @@ button {
 		background-color: var(--ll-accent-color);
 	}
 }
-a.button,
+a.button[href],
 button {
 	&.active {
 		box-shadow: 0 0 0 0.25rem $text-color;
@@ -37,15 +37,17 @@ button {
 }
 
 // =========================================
-// Header
+// Nav
 
 .lifeline-nav {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column wrap;
 	align-items: center;
 	justify-content: center;
 
-	padding: 0.5rem;
+	@media screen and (min-width: 768px) {
+		flex-flow: row wrap;
+	}
 
 	button {
 		font-size: 1.2rem;
@@ -54,43 +56,17 @@ button {
 }
 
 .lifeline-nav > * {
-	margin: 0.75rem;
-}
+	width: 100%;
+	margin: 1rem 0 0;
 
-// =========================================
-// Intro
+	@media screen and (min-width: 768px) {
+		width: calc(50% - 5rem);
+	}
 
-.intro-nav {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: flex-start;
-	justify-content: flex-start;
-	padding: 1rem 0;
-
-	button {
-		font-size: 1.2rem;
-		padding: 1.5rem 2rem;
+	@media screen and (min-width: 992px) {
+		width: auto;
+		margin: 0.75rem;
 	}
 }
-.intro-nav > * {
-	width: calc(50% - 2rem);
-	margin: 1rem 2rem 1rem 0;
-}
 
 // =========================================
-
-// =========================================
-// Footer
-
-.lifeline-footer-nav {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	justify-content: flex-end;
-
-	padding: 0.5rem;
-}
-
-.lifeline-footer-nav > * {
-	margin: 0.5rem;
-}

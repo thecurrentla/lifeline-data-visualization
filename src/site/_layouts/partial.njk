@@ -1,6 +1,9 @@
 {% set css %}
 {% include "css/main.css" %}
 {% endset %}
+{% set js %}
+{% include "js/lifeline.js" %}
+{% endset %}
 <section class="lifeline">
   <style>
     {{css | safe}}
@@ -92,77 +95,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
   <script>
-    function setActiveCategory(category) {
-      document
-        .querySelectorAll('[data-lifeline-category].active')
-        .forEach(function (item) {
-          item
-            .classList
-            .remove("active");
-
-        });
-      document
-        .querySelectorAll('[data-lifeline-category="' + category + '"]')
-        .forEach(function (item) {
-          item
-            .classList
-            .add("active");
-        });
-      document
-        .querySelectorAll('[data-lifeline-active-category]')
-        .forEach(function (item) {
-          item.dataset.lifelineActiveCategory = category;
-        });
-    }
-
-    document
-      .querySelectorAll('a[href][data-lifeline-category]')
-      .forEach(function (button) {
-        button.addEventListener('click', function (event) {
-          setActiveCategory(event.target.dataset.lifelineCategory);
-        });
-      });
-    if (window.location.hash) {
-      setActiveCategory(window.location.hash.replace('#', ''));
-    }
-
-    var graph_height = document
-      .querySelector('.graph')
-      .getBoundingClientRect();
-    var cards_height = document
-      .querySelector('.card-group')
-      .getBoundingClientRect();
-
-    console.log('.graph: ');
-    console.log(graph_height.height);
-    console.log('.card-group: ');
-    console.log(cards_height.height);
-
-    var triggering_column = '.graph';
-    var scrolling_column = '.card-group';
-
-    gsap.to(scrolling_column, {
-      //yPercent: 50,
-      y: function (index, target, targets) { //function-based value
-        var target_dimensions = target.getBoundingClientRect();
-        var parent_dimensions = target
-          .parentNode
-          .getBoundingClientRect();
-        var distance = parent_dimensions.bottom - target_dimensions.height;
-
-        if (window.innerWidth > 768) {
-          return parent_dimensions.bottom - target_dimensions.height;
-        } else {
-          return parent_dimensions.height - target_dimensions.height;
-        }
-      },
-      ease: 'none',
-      scrollTrigger: {
-        trigger: triggering_column,
-        start: 'top 30%',
-        end: 'bottom 0%',
-        scrub: 0.1
-      }
-    });
+    {{js | safe}}
   </script>
 </section>
