@@ -125,7 +125,7 @@ $card-offset: 2%;
 }
 
 .ll-card--intro {
-	padding: 1.5rem 2rem;
+	max-width: calc(85% - #{$card-offset});
 	margin-right: $card-offset / 2;
 	margin-left: $card-offset / 2;
 
@@ -134,7 +134,11 @@ $card-offset: 2%;
 	--card-border-radius: 4px;
 	--card-background-color: rgba(238, 238, 238, 0.6);
 
-	font-size: 1.25rem;
+	font-size: 1.1rem;
+	@media screen and (min-width: 992px) {
+		font-size: 1.25rem;
+		padding: 1.5rem 2rem;
+	}
 
 	> * + * {
 		margin-top: 1rem;
