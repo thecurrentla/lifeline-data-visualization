@@ -6,41 +6,20 @@
       </nav>
     </header>
 
-    <div class="lifeline-intro-wrapper">
-      {% for category in categories %}
-        {% for summary in summaries %}
-          {% if summary.category == category.name %}
-            <div class="lifeline-intro category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro" id="{{category.slug}}">
-              <div class="lifeline-intro-inner">
-                <div class="lifeline-intro-title">
-                  <h2>{{ category.name }}</h2>
-                </div>
-                <div class="lifeline-intro-text">
-                  <p>{{ summary.text }}</p>
-                </div>
-              </div>
+    <section class="lifeline-column-wrapper">
+      <div class="lifeline-column column-card">
+        {%- for category in categories -%}
+          <section class="card-category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
+            <div class="card-stack">
+              {%- for item in entries -%}
+                {%- if item.category == category.name or item.category == "All" -%}
+                  {% include "card-" ~ item.type ~ ".njk" %}
+                {%- endif -%}
+              {%- endfor -%}
             </div>
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-    </div>
-
-    <div class="lifeline-column-wrapper">
-      <main class="lifeline-column column-card">
-        <div class="cards">
-          {%- for category in categories -%}
-            <section class="category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-              <div class="card-group">
-                {%- for item in entries -%}
-                  {%- if item.category == category.name or item.category == "All" -%}
-                    {% include "card-" ~ item.type ~ ".njk" %}
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
-            </section>
-          {%- endfor -%}
-        </div>
-      </main>
+          </section>
+        {%- endfor -%}
+      </div>
       <div class="lifeline-column column-graph">
         <div class="graph" style="--ll-count-total: {{ stat_totals.largest }}">
           {%- for item in stats -%}
@@ -74,7 +53,7 @@
           {%- endfor -%}
         </div>
       </div>
-    </div>
+    </section>
 
     <footer class="lifeline-footer">
       <nav class="lifeline-nav" aria-label="Categories">

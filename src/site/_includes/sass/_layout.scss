@@ -32,10 +32,6 @@
 // Columns
 
 .lifeline-column-wrapper {
-	// display: flex;
-	// flex-flow: row nowrap;
-	// align-items: flex-start;
-	// justify-content: center;
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr;
@@ -49,6 +45,7 @@
 	width: 100%;
 	padding: 2rem 0 1rem;
 	overflow: hidden;
+	align-items: stretch;
 }
 .lifeline-column {
 	position: relative;
@@ -58,23 +55,40 @@
 		grid-row: unset;
 		grid-column: unset;
 	}
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	align-items: start;
+
+	padding-top: 1rem;
 	overflow: hidden;
-	max-width: 125ch;
 }
+
 .column-card {
 	z-index: 2;
-	flex-basis: auto;
-	padding-top: 1rem;
+
+	justify-items: end;
+
+	> * {
+		opacity: 0;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+
+		@include transition-basic($duration: 250ms, $property: "transform, opacity");
+	}
+	> *.active {
+		z-index: 50;
+		opacity: 1;
+
+		transform: translateX(var(--ll-card-transform, 100%));
+		transform-origin: center right;
+	}
 }
 
 .column-graph {
-	flex-basis: 20%;
 	z-index: 1;
 
-	@media screen and (min-width: 992px) {
-		padding-top: 2rem;
-	}
-	@media screen and (min-width: 1200px) {
-		padding-top: 4rem;
-	}
+	align-items: center;
+	justify-items: stretch;
 }

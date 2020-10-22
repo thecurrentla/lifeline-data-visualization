@@ -13,49 +13,55 @@ function setActiveCategory(category) {
 }
 
 function setScrollAnimation() {
-	console.log(ScrollTrigger.getAll());
 	ScrollTrigger.getAll().forEach(function (trigger) {
-		console.log("killed");
-		console.log(trigger);
 		trigger.kill();
 	});
-	console.log(ScrollTrigger.getAll());
 
-	var graph_height = document.querySelector(".graph").getBoundingClientRect();
-	var cards_height = document.querySelector(".active .card-group").getBoundingClientRect();
+	var graph_dimensions = document.querySelector(".graph").getBoundingClientRect();
+	var cards_dimensions = document.querySelector(".active .card-stack").getBoundingClientRect();
 
-	//console.log('.graph: ');
-	//console.log(graph_height.height);
-	//console.log('.card-group: ');
-	//console.log(cards_height.height);
+	if (graph_dimensions.height < cards_dimensions.height) {
+		var triggering_column = ".active .card-stack";
+		var scrolling_column = ".graph";
+	} else {
+		var triggering_column = ".graph";
+		var scrolling_column = ".active .card-stack";
+	}
 
-	var triggering_column = ".graph";
-	var scrolling_column = ".active .card-group";
+	// var triggering_column = ".column-graph";
+	// var scrolling_column = ".active .card-stack";
+
+	// console.log("graph_dimensions: " + scrolling_column);
+	// console.table(graph_dimensions);
+	// console.log("cards_dimensions: " + triggering_column);
+	// console.table(cards_dimensions);
 
 	gsap.to(scrolling_column, {
 		//yPercent: 50,
 		y: function (index, target, targets) {
 			//function-based value
-			var scroller_dimensions = target.getBoundingClientRect();
+			var scroller_dimensions = document.querySelector(scrolling_column).getBoundingClientRect();
 			var trigger_dimensions = document.querySelector(triggering_column).getBoundingClientRect();
-			var distance = trigger_dimensions.height - scroller_dimensions.height;
+
+			// console.log("scroller: " + scrolling_column);
+			// console.table(scroller_dimensions);
+			// console.log("trigger: " + triggering_column);
+			// console.table(trigger_dimensions);
+
+			var distance = trigger_dimensions.bottom - scroller_dimensions.bottom;
 			distance = "+=" + distance;
 
-			//console.log('scroller_dimensions: ');
-			//console.log(scroller_dimensions);
-			//console.log('trigger_dimensions: ');
-			//console.log(trigger_dimensions);
-
-			console.log(distance);
+			// console.log(distance);
 
 			return distance;
 		},
 		ease: "none",
 		scrollTrigger: {
 			trigger: triggering_column,
-			start: "top 30%",
-			end: "bottom 0%",
+			start: "top 5%",
+			end: "bottom 95%",
 			scrub: 0.1,
+			markers: true,
 		},
 	});
 }
@@ -67,8 +73,16 @@ document.querySelectorAll("a[href][data-lifeline-category]").forEach(function (b
 		} else {
 			setActiveCategory(event.target.dataset.lifelineCategory);
 		}
+		document.querySelector(".lifeline-header").scrollIntoView();
 	});
 });
+
+document.querySelectorAll(".line").forEach(function (line) {
+	line.addEventListener("click", function (event) {
+		console.log(line.dataset.date);
+	});
+});
+
 if (window.location.hash) {
 	setActiveCategory(window.location.hash.replace("#", ""));
 }

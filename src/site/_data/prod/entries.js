@@ -6,8 +6,7 @@ const seed = require("../../../utils/save-seed.js");
 const parse_date = require("../../../utils/parse-date.js");
 
 const sheetID = "18q-im3-O1-vlCj7XT5TaFkBzocnFWvyBV7XTtyTcqoU";
-const tabIDs = ["od6", "ovy9w99"];
-// const tabIDs = ["oe0qcby", "ok7deqw"];
+const tabIDs = ["onyp2mz", "od6", "ovy9w99"];
 
 module.exports = () => {
 	var requests = [];
