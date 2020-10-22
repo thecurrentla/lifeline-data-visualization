@@ -1,8 +1,5 @@
 const markdownIt = require("markdown-it");
 
-const SpreadsheetTabStats = "ovej33q";
-const SpreadsheetTabsCards = "ovej33q";
-
 module.exports = function (eleventyConfig) {
 	// A useful way to reference the context we are runing eleventy in
 	let env = process.env.ELEVENTY_ENV;
@@ -18,9 +15,16 @@ module.exports = function (eleventyConfig) {
 		return md.render(content);
 	});
 
+	eleventyConfig.addPassthroughCopy({
+		"src/site/_includes/css/*": "css/",
+		"src/site/_includes/js/*": "js/",
+		"node_modules/gsap/dist/": "js/gsap/",
+	});
+
 	// make the seed target act like prod
 	env = env == "seed" ? "prod" : env;
 	return {
+		passthroughFileCopy: true,
 		dir: {
 			includes: "_includes",
 			layouts: "_layouts",

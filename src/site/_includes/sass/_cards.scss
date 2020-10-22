@@ -38,8 +38,6 @@
 // =========================================
 // Content
 
-$card-offset: 5%;
-
 .cards {
 	position: relative;
 	display: grid;
@@ -75,15 +73,18 @@ $card-offset: 5%;
 	margin-top: 1.25rem;
 }
 
+$card-offset: 2%;
 .card {
 	position: relative;
 	padding: 1rem;
+	max-width: 75%;
 	margin-right: $card-offset;
 	margin-left: $card-offset;
 
 	@media screen and (min-width: 992px) {
 		width: 60ch;
-		max-width: 100%;
+		// max-width: 100%;
+		max-width: calc(100% - #{$card-offset * 2});
 		padding: 1.5rem;
 	}
 
@@ -130,7 +131,7 @@ $card-offset: 5%;
 				background-color: var(--card-background-color);
 				border-radius: var(--card-border-radius);
 				// filter: drop-shadow(0 0 2px var(--card-shadow-color));
-				box-shadow: 0 0 2px var(--card-shadow-color);
+				box-shadow: 0 0 2px 1px var(--card-shadow-color);
 				-webkit-backdrop-filter: blur(2px);
 				backdrop-filter: blur(2px);
 			}
@@ -148,7 +149,10 @@ $card-offset: 5%;
 	}
 
 	--card-background-color: rgba(238, 238, 238, 0.67);
-	--card-shadow-color: rgba(58, 58, 58, 0.4);
+	--card-shadow-color: rgba(58, 58, 58, 0.25);
+}
+.card--news__date {
+	margin-bottom: -0.25em;
 }
 .card--news__title {
 	font-size: 1.2em;
@@ -156,9 +160,6 @@ $card-offset: 5%;
 	font-weight: bold;
 }
 .card--news__content {
-}
-.card--news__dateline {
-	color: var(--ll-text-color);
 }
 
 .card--call {
@@ -169,7 +170,7 @@ $card-offset: 5%;
 
 	--card-text-color: rgba(255, 255, 255, 1);
 	--card-background-color: rgba(0, 0, 0, 0.67);
-	--card-shadow-color: rgba(255, 255, 255, 0.9);
+	--card-shadow-color: rgba(255, 255, 255, 0.75);
 
 	--card-border-radius: 1.5rem;
 

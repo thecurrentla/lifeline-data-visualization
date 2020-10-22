@@ -23,7 +23,6 @@
   "dependencies": {
     "@11ty/eleventy": "^0.11.0",
     "@11ty/eleventy-cache-assets": "^2.0.3",
-    "a11y-dialog": "^5.4.1",
     "autoprefixer": "^10.0.1",
     "axios": "^0.20.0",
     "cssnano": "^4.1.10",
