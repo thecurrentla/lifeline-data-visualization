@@ -48,7 +48,7 @@
                     {% set amount = item.financial %}
                   {% endif %}
                   <td class="ll-line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-                    <span class="visually-hidden">
+                    <span class="visually-hidden sr-only">
                       {{ category.name }}:
                       {{ amount }}
                       Calls

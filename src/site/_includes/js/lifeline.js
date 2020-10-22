@@ -78,5 +78,26 @@ document.querySelectorAll("a[href][data-lifeline-category]").forEach(function (b
 });
 
 if (window.location.hash) {
-	setActiveCategory(window.location.hash.replace("#", ""));
+	var category = window.location.hash.replace("#", "").split("-");
+	// window.location.hash = category;
+	setActiveCategory(category[0]);
+	console.log(category);
+
+	document.querySelectorAll(".ll-card.share-link").forEach(function (card) {
+		card.addEventListener("click", function (event) {
+			console.log(card.dataset.date);
+			document.querySelectorAll(".ll-line[data-date][class*='ll-highlight']").forEach(function (item) {
+				item.classList.remove("ll-highlight-minor");
+				item.classList.remove("ll-highlight-major");
+			});
+			document
+				.querySelectorAll(".ll-line[data-date*='" + card.dataset.date.substr(0, 7) + "']")
+				.forEach(function (item) {
+					item.classList.add("ll-highlight-minor");
+				});
+			document.querySelectorAll(".ll-line[data-date='" + card.dataset.date + "']").forEach(function (item) {
+				item.classList.add("ll-highlight-major");
+			});
+		});
+	});
 }

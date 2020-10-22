@@ -1,15 +1,15 @@
 <article class="ll-card ll-card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
-		<div class="dateline">
-				{{ item.date_medium }}
-		</div>
-		<div class="ll-card--{{ item.type }}__title">
-				<strong>{{ item.headline }}</strong>
-		</div>
-		{% if item.text %}
-				<div class="ll-card--{{ item.type }}__content">
-						<p>
-								{{ item.text }}
-						</p>
-				</div>
-		{% endif %}
+  <div class="dateline">
+    {{ item.date_long }}
+  </div>
+  <div class="ll-card--{{ item.type }}__title">
+    <strong>{{ item.headline }}</strong>
+  </div>
+  {% if item.text %}
+    <div class="ll-card--{{ item.type }}__content">
+      <p>
+        {{ item.text }}
+      </p>
+    </div>
+  {% endif %}
 </article>

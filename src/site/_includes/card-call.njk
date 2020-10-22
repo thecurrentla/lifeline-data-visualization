@@ -1,23 +1,35 @@
-<article class="ll-card ll-card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+{% set card_id %}
+{{ category.slug ~ "-" ~ item.date_slug ~ "-" ~ item.time | replace(":", "") }}
+{% endset %}
+
+{% set datetime %}
+{% if item.time %}
+  {{ item.date_long ~ ", " ~ item.time }}
+{% else %}
+  {{ item.date_long }}
+{% endif %}
+{% endset %}
+
+<article class="ll-card ll-card--{{ item.type }} category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}" id="{{ card_id | slug }}">
   <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
-    <div class="datetime">
-      <span class="date">{{ item.date_long }}</span>
-      {% if item.time %}
-        <span class="time">{{ item.time }}</span>
-      {% endif %}
-    </div>
-    {% if item.parish %}
-      <div class="parish">
-        {{ item.parish }}
-        Parish
+    <div class="ll-card-header">
+      <div class="ll-card-parish">
+        <small>{{ item.parish }}
+          Parish</small>
       </div>
-    {% endif %}
+      <time class="date">{{ datetime }}</time>
+    </div>
+
+    <a class="native-share-button share-button" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
+      <i class="fa fa-link" aria-hidden="true"></i>
+      <span class="sr-only">Share</span>
+    </a>
   </div>
   <div class="ll-card--{{ item.type }}__content">
     <p>{{ item.text }}</p>
   </div>
   <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__footer">
-    <span>
+    <div class="ll-card-length">
       <small>Length:</small>
       {{ item.length | int }}
       min.</span>

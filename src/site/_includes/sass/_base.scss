@@ -5,7 +5,7 @@ a {
 	&:active,
 	&:focus {
 		color: var(--ll-link-color-hover);
-		filter: saturate(150%);
+		filter: saturate(120%);
 	}
 }
 
