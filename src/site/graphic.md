@@ -1,5 +1,5 @@
 ---
 title: Life on the line
-layout: partial
+layout: graphic
 permalink: graphic.html
 ---

@@ -5,6 +5,8 @@ module.exports = function (eleventyConfig) {
 	let env = process.env.ELEVENTY_ENV;
 
 	eleventyConfig.addWatchTarget("includes/css/");
+	eleventyConfig.addWatchTarget("includes/js/");
+	eleventyConfig.addWatchTarget("includes/scss/");
 
 	//Markdown config
 	const md = new markdownIt({

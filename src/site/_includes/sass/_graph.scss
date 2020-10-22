@@ -85,7 +85,7 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 0;
+	left: -0.5ch;
 
 	display: flex;
 	flex-flow: row nowrap;
@@ -98,15 +98,16 @@
 
 	> * {
 		opacity: 0.5;
-		margin-right: 0.75ch;
 	}
 
 	text-align: right;
 
-	.day {
-		display: none;
+	[data-day-of-week]::after {
 		@media screen and (min-width: 992px) {
-			display: block;
+			content: attr(data-day-of-week);
+			display: inline-block;
+			margin-left: 0.75ch;
+			font-weight: bold;
 		}
 	}
 }

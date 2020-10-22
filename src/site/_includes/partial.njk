@@ -21,37 +21,44 @@
         {%- endfor -%}
       </div>
       <div class="lifeline-column column-graph">
-        <div class="graph" style="--ll-count-total: {{ stat_totals.largest }}">
-          {%- for item in stats -%}
-            <div class="line" data-date="{{ item.date_num }}">
-              <div class="line__date line__text">
-                <span class="date">{{ item.date_short }}</span>
-                <strong class="day">{{ item.day | truncate(1, true, "") }}</strong>
-              </div>
-              {% for category in categories %}
-                {% if category.slug == "health" %}
-                  {% set amount = item.health %}
-                {% endif %}
-                {% if category.slug == "food" %}
-                  {% set amount = item.food %}
-                {% endif %}
-                {% if category.slug == "housing" %}
-                  {% set amount = item.housing %}
-                {% endif %}
-                {% if category.slug == "financial" %}
-                  {% set amount = item.financial %}
-                {% endif %}
-                <div class="line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-                  <span class="visually-hidden">
-                    {{ category.name }}:
-                    {{ amount }}
-                    Calls
-                  </span>
-                </div>
-              {%- endfor -%}
-            </div>
-          {%- endfor -%}
-        </div>
+        <table class="graph-wrapper" style="--ll-count-total: {{ stat_totals.largest }}">
+          <thead class="visually-hidden sr-only screen-reader-text">
+            <th>Date</th>
+            {% for category in categories %}
+              <th>Date</th>
+            {% endfor %}
+          </thead>
+          <tbody class="graph">
+            {%- for item in stats -%}
+              <tr class="line" data-date="{{ item.date_num }}">
+                <td class="line__date">
+                  <span class="date" data-day-of-week="{{ item.day | truncate(1, true, " ") }}">{{ item.date_short }}</span>
+                </td>
+                {% for category in categories %}
+                  {% if category.slug == "health" %}
+                    {% set amount = item.health %}
+                  {% endif %}
+                  {% if category.slug == "food" %}
+                    {% set amount = item.food %}
+                  {% endif %}
+                  {% if category.slug == "housing" %}
+                    {% set amount = item.housing %}
+                  {% endif %}
+                  {% if category.slug == "financial" %}
+                    {% set amount = item.financial %}
+                  {% endif %}
+                  <td class="line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
+                    <span class="visually-hidden">
+                      {{ category.name }}:
+                      {{ amount }}
+                      Calls
+                    </span>
+                  </td>
+                {%- endfor -%}
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
       </div>
     </section>
 
