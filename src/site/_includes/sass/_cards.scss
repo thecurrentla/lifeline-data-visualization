@@ -38,7 +38,7 @@
 // =========================================
 // Content
 
-$card-offset: 3vw;
+$card-offset: 5%;
 
 .cards {
 	position: relative;
@@ -77,13 +77,15 @@ $card-offset: 3vw;
 
 .card {
 	position: relative;
-	max-width: 75%;
 	padding: 1rem;
+	margin-right: $card-offset;
+	margin-left: $card-offset;
+
 	@media screen and (min-width: 992px) {
-		max-width: 60ch;
+		width: 60ch;
+		max-width: 100%;
 		padding: 1.5rem;
 	}
-	margin-left: auto;
 
 	--ll-link-color: currentColor;
 	--ll-link-color-hover: var(--ll-text-color);
@@ -141,7 +143,8 @@ $card-offset: 3vw;
 
 .card--news {
 	@media screen and (min-width: 992px) {
-		margin-right: $card-offset;
+		// margin-right: $card-offset;
+		transform: translateX($card-offset/2);
 	}
 
 	--card-background-color: rgba(238, 238, 238, 0.67);
@@ -160,7 +163,8 @@ $card-offset: 3vw;
 
 .card--call {
 	@media screen and (min-width: 992px) {
-		margin-left: $card-offset;
+		// margin-left: $card-offset;
+		transform: translateX(-$card-offset/2);
 	}
 
 	--card-text-color: rgba(255, 255, 255, 1);
