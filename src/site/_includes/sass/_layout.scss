@@ -1,23 +1,10 @@
 .lifeline-header,
 .lifeline-footer {
+	text-align: center;
+	padding: 1rem 1.5rem;
 }
 .lifeline-header {
-	padding: 1rem 1.5rem;
-	margin: 0 auto 1rem;
-
-	text-align: center;
-}
-.lifeline-header-text {
-	width: 70ch;
-	max-width: 100%;
-	padding: 1rem 1.5rem;
-	margin: 0 auto 1rem;
-	font-size: 1.33rem;
-
-	h1 {
-		margin: 0;
-		font-size: 3rem;
-	}
+	margin: 3rem auto 0;
 }
 
 .lifeline-footer {
@@ -25,7 +12,7 @@
 	flex-flow: row nowrap;
 	justify-content: center;
 	align-items: flex-end;
-	padding: 1rem 1.5rem;
+	margin: 0 auto 3rem;
 }
 
 // =========================================
@@ -43,7 +30,7 @@
 	}
 
 	width: 100%;
-	padding: 2rem 0 1rem;
+	padding: 1rem 0;
 	overflow: hidden;
 	align-items: stretch;
 }
@@ -75,17 +62,17 @@
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
 
+		transform: translateX(var(--ll-card-transform, 100%)) rotateY(var(--ll-card-transform, 45deg));
 		transform-origin: center right;
 
 		transition-property: transform, opacity;
-		transition-duration: 250ms;
+		transition-duration: 250ms, 500ms;
 		transition-timing-function: ease-out;
 	}
 	> *.active {
 		z-index: 50;
 
 		opacity: 1;
-		transform: translateX(var(--ll-card-transform, 100%));
 	}
 }
 
