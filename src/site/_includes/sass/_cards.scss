@@ -38,7 +38,7 @@
 // =========================================
 // Content
 
-.card-stack {
+.ll-card-stack {
 	display: flex;
 	flex-flow: column;
 	align-items: flex-end;
@@ -46,12 +46,12 @@
 		padding-left: 1rem;
 	}
 }
-.card-stack > * + * {
+.ll-card-stack > * + * {
 	margin-top: 1.25rem;
 }
 
 $card-offset: 2%;
-.card {
+.ll-card {
 	position: relative;
 	padding: 1rem;
 	max-width: 75%;
@@ -77,6 +77,7 @@ $card-offset: 2%;
 
 	a {
 		text-decoration-color: var(--ll-text-color);
+		border-color: var(--ll-text-color);
 	}
 
 	p:last-child {
@@ -116,11 +117,11 @@ $card-offset: 2%;
 		}
 	}
 }
-.card > *:not(.visually-hidden) + * {
+.ll-card > *:not(.visually-hidden) + * {
 	margin-top: 0.75rem;
 }
 
-.card--intro {
+.ll-card--intro {
 	padding: 1.5rem 2rem;
 	margin-right: $card-offset / 2;
 	margin-left: $card-offset / 2;
@@ -136,13 +137,13 @@ $card-offset: 2%;
 		margin-top: 1rem;
 	}
 }
-.card--intro__title {
+.ll-card--intro__title {
 }
-.card--intro__content {
+.ll-card--intro__content {
 	font-style: italic;
 }
 
-.card--news {
+.ll-card--news {
 	@media screen and (min-width: 992px) {
 		// margin-right: $card-offset;
 		transform: translateX($card-offset/2);
@@ -151,20 +152,20 @@ $card-offset: 2%;
 	--card-background-color: rgba(238, 238, 238, 0.67);
 	--card-shadow-color: rgba(58, 58, 58, 0.25);
 }
-.card--news__date {
+.ll-card--news__date {
 	margin-bottom: -0.5em;
 	font-size: 13px;
 }
-.card--news__title {
+.ll-card--news__title {
 	font-size: 1.2em;
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.card--news__content {
+.ll-card--news__content {
 	display: none;
 }
 
-.card--call {
+.ll-card--call {
 	@media screen and (min-width: 992px) {
 		// margin-left: $card-offset;
 		transform: translateX(-$card-offset/2);
@@ -178,7 +179,7 @@ $card-offset: 2%;
 
 	font-family: $font-family-mono;
 }
-.card--call__header {
+.ll-card--call__header {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
@@ -186,20 +187,20 @@ $card-offset: 2%;
 
 	letter-spacing: -0.025em;
 }
-.card--call__meta {
+.ll-card--call__meta {
 	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 13px;
 }
-.card--call__meta small {
+.ll-card--call__meta small {
 	opacity: 0.85;
 	font-weight: bolder;
 }
-.card--call__meta:first-child {
+.ll-card--call__meta:first-child {
 }
-.card--call__meta:last-child {
+.ll-card--call__meta:last-child {
 }
-.card--call__datetime {
+.ll-card--call__datetime {
 	display: flex;
 	flex-flow: row wrap;
 
@@ -207,6 +208,6 @@ $card-offset: 2%;
 		content: ", ";
 	}
 }
-.card--call__content {
+.ll-card--call__content {
 	letter-spacing: -0.025em;
 }

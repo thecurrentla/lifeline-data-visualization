@@ -19,18 +19,18 @@ function setScrollAnimation() {
 	});
 
 	var graph_dimensions = document.querySelector(".graph").getBoundingClientRect();
-	var cards_dimensions = document.querySelector(".active .card-stack").getBoundingClientRect();
+	var cards_dimensions = document.querySelector(".active .ll-card-stack").getBoundingClientRect();
 
 	if (graph_dimensions.height < cards_dimensions.height) {
-		var triggering_column = ".active .card-stack";
+		var triggering_column = ".active .ll-card-stack";
 		var scrolling_column = ".graph";
 	} else {
 		var triggering_column = ".graph";
-		var scrolling_column = ".active .card-stack";
+		var scrolling_column = ".active .ll-card-stack";
 	}
 
 	// var triggering_column = ".column-graph";
-	// var scrolling_column = ".active .card-stack";
+	// var scrolling_column = ".active .ll-card-stack";
 
 	// console.log("graph_dimensions: " + scrolling_column);
 	// console.table(graph_dimensions);

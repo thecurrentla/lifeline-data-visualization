@@ -1,4 +1,4 @@
-<section class="lifeline">
+<section class="lifeline" id="lifeline-embed">
   <div class="lifeline-wrapper" data-lifeline-active-category="intro">
     <header class="lifeline-header">
       <nav class="lifeline-nav" aria-label="Main Menu">
@@ -9,8 +9,8 @@
     <section class="lifeline-column-wrapper">
       <div class="lifeline-column column-card">
         {%- for category in categories -%}
-          <section class="card-category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-            <div class="card-stack">
+          <section class="ll-card-category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
+            <div class="ll-card-stack">
               {%- for item in entries -%}
                 {%- if item.category == category.name or item.category == "All" -%}
                   {% include "card-" ~ item.type ~ ".njk" %}

@@ -1,0 +1,64 @@
+@import "variables";
+@import "mixins";
+
+#lifeline-embed {
+	@import "base";
+	@import "layout";
+	@import "nav";
+	@import "cards";
+	@import "graph";
+
+	/* content made available only to screen readers */
+	.visually-hidden {
+		position: absolute;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		padding: 0;
+		border: 0;
+		white-space: nowrap;
+	}
+
+	// =========================================
+	// Swatches
+
+	[data-lifeline-category*="health"] {
+		--ll-text-color: #{$text-color-health};
+		--ll-accent-color: hsla(0, 75%, 50%, var(--ll-accent-opacity, 1));
+	}
+	[data-lifeline-category*="food"] {
+		--ll-text-color: #{$text-color-food};
+		--ll-accent-color: hsla(40, 100%, 50%, var(--ll-accent-opacity, 1));
+	}
+	[data-lifeline-category*="housing"] {
+		--ll-text-color: #{$text-color-housing};
+		--ll-accent-color: hsla(240, 100%, 50%, var(--ll-accent-opacity, 1));
+	}
+	[data-lifeline-category*="financial"] {
+		--ll-text-color: #{$text-color-financial};
+		--ll-accent-color: hsla(120, 100%, 25%, var(--ll-accent-opacity, 1));
+	}
+
+	[data-lifeline-category*="health"][data-lifeline-active-category*="health"] {
+		--ll-line-opacity: 1;
+		--ll-card-transform: 0;
+		--ll-intro-display: block;
+	}
+	[data-lifeline-category*="food"][data-lifeline-active-category*="food"] {
+		--ll-line-opacity: 1;
+		--ll-card-transform: 0;
+		--ll-intro-display: block;
+	}
+	[data-lifeline-category*="housing"][data-lifeline-active-category*="housing"] {
+		--ll-line-opacity: 1;
+		--ll-card-transform: 0;
+		--ll-intro-display: block;
+	}
+	[data-lifeline-category*="financial"][data-lifeline-active-category*="financial"] {
+		--ll-line-opacity: 1;
+		--ll-card-transform: 0;
+		--ll-intro-display: block;
+	}
+}
