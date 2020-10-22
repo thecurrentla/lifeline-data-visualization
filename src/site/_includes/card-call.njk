@@ -1,25 +1,25 @@
 <article class="ll-card ll-card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
-		<div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
-				<div class="datetime">
-						<span class="date">{{ item.date_medium }}</span>
-						{% if item.time %}
-								<span class="time">{{ item.time }}</span>
-						{% endif %}
-				</div>
-				{% if item.parish %}
-						<div class="parish">
-								{{ item.parish }}
-								Parish
-						</div>
-				{% endif %}
-		</div>
-		<div class="ll-card--{{ item.type }}__content">
-				<p>{{ item.text }}</p>
-		</div>
-		<div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__footer">
-				<span>
-						<small>Length:</small>
-						{{ item.length | int }}
-						min.</span>
-		</div>
+  <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
+    <div class="datetime">
+      <span class="date">{{ item.date_long }}</span>
+      {% if item.time %}
+        <span class="time">{{ item.time }}</span>
+      {% endif %}
+    </div>
+    {% if item.parish %}
+      <div class="parish">
+        {{ item.parish }}
+        Parish
+      </div>
+    {% endif %}
+  </div>
+  <div class="ll-card--{{ item.type }}__content">
+    <p>{{ item.text }}</p>
+  </div>
+  <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__footer">
+    <span>
+      <small>Length:</small>
+      {{ item.length | int }}
+      min.</span>
+  </div>
 </article>

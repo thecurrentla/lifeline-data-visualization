@@ -200,10 +200,7 @@ $card-offset: 2%;
 }
 .ll-card--call__meta:last-child {
 }
-.ll-card--call__datetime {
-	display: flex;
-	flex-flow: row wrap;
-
+.ll-card--call__meta .datetime {
 	> *:not(:last-child)::after {
 		content: ", ";
 	}
