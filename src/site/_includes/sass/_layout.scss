@@ -23,27 +23,36 @@
 .lifeline-footer {
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: flex-end;
 	padding: 1rem 1.5rem;
 }
+
+// =========================================
+// Columns
 
 .lifeline-column-wrapper {
 	display: flex;
 	flex-flow: row nowrap;
 	overflow-x: hidden;
 }
-.lifeline-column-wrapper > * {
-	flex-basis: 50%;
-}
-
 .lifeline-column {
 	overflow-x: hidden;
-	padding: 4rem 0.5rem;
+	padding: 1rem 0.5rem;
 }
 .column-graph {
-	order: 1;
+	flex-grow: 1;
+	flex-basis: 20%;
+
+	@media screen and (min-width: 768px) {
+		flex-basis: 30%;
+		padding-top: 5rem;
+	}
+	@media screen and (min-width: 1200px) {
+		flex-basis: 50%;
+		padding-top: 10rem;
+	}
 }
-.column-cards {
-	order: 2;
+.column-card {
+	flex-basis: 60%;
 }

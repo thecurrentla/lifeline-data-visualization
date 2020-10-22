@@ -123,5 +123,24 @@
     if (window.location.hash) {
       setActiveCategory(window.location.hash.replace('#', ''));
     }
+    gsap.to('.card-group', {
+      //yPercent: 50,
+      y: function (index, target, targets) { //function-based value
+        var target_dimensions = target.getBoundingClientRect();
+        var parent_dimensions = target
+          .parentNode
+          .getBoundingClientRect();
+        var distance = parent_dimensions.bottom - target_dimensions.height;
+
+        return distance;
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".graph",
+        start: "top 50%",
+        end: "bottom 0%",
+        scrub: 0.1
+      }
+    });
   </script>
 </section>
