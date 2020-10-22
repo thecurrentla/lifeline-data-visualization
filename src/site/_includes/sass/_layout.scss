@@ -1,13 +1,13 @@
-.lifeline-header,
-.lifeline-footer {
+.ll-header,
+.ll-footer {
 	text-align: center;
 	padding: 1rem 1.5rem;
 }
-.lifeline-header {
+.ll-header {
 	margin: 3rem auto 0;
 }
 
-.lifeline-footer {
+.ll-footer {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: center;
@@ -18,7 +18,7 @@
 // =========================================
 // Columns
 
-.lifeline-column-wrapper {
+.ll-column-wrapper {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr;
@@ -34,7 +34,7 @@
 	overflow: hidden;
 	align-items: stretch;
 }
-.lifeline-column {
+.ll-column {
 	position: relative;
 	grid-row: 1 / -1;
 	grid-column: 1 / -1;
@@ -52,7 +52,7 @@
 	overflow: hidden;
 }
 
-.column-card {
+.ll-column-card {
 	z-index: 2;
 
 	justify-items: end;
@@ -69,14 +69,14 @@
 		transition-duration: 250ms, 500ms;
 		transition-timing-function: ease-out;
 	}
-	> *.active {
+	> *.ll-active {
 		z-index: 50;
 
 		opacity: 1;
 	}
 }
 
-.column-graph {
+.ll-column-graph {
 	z-index: 1;
 
 	align-items: center;

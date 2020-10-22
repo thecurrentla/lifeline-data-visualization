@@ -1,10 +1,10 @@
-.graph {
+.ll-graph {
 	display: grid;
 	grid-gap: 2px;
 
 	--ll-count-total: 200;
 }
-.line {
+.ll-line {
 	position: relative;
 
 	display: grid;
@@ -13,6 +13,7 @@
 	align-items: center;
 
 	height: 2ch;
+	transform-origin: center left;
 
 	--ll-date-width: 6ch;
 	--ll-number-width: 4ch;
@@ -33,7 +34,7 @@
 	background-color: transparent;
 }
 
-.line__display {
+.ll-line__display {
 	grid-column: 1 / var(--ll-count);
 	grid-row: 1 / -1;
 
@@ -55,7 +56,7 @@
 
 	@include transition-basic($duration: 500ms);
 }
-.line__display:after {
+.ll-line__display:after {
 	content: attr(data-count);
 	display: inline-block;
 	position: absolute;
@@ -73,17 +74,46 @@
 
 	@include transition-basic;
 }
-.line {
+.ll-line {
 	&:hover,
 	&:active,
 	&:focus {
-		.line__display:after {
+		.ll-line__display:after {
+			opacity: 1;
+		}
+	}
+}
+.ll-line.ll-highlight-minor {
+	color: var(--ll-text-color);
+
+	.ll-line__display {
+		filter: drop-shadow(0 0 0.5rem rgba(58, 58, 58, 0.25)) saturate(120%);
+	}
+	.ll-line__display::after {
+		opacity: 0.75;
+	}
+	.ll-line__date {
+		> * {
+			opacity: 0.75;
+		}
+	}
+}
+.ll-line.ll-highlight-major {
+	color: var(--ll-text-color);
+	.ll-line__display {
+		filter: drop-shadow(0 0 1rem rgba(58, 58, 58, 0.25)) saturate(180%);
+	}
+	.ll-line__display::after {
+		opacity: 1;
+	}
+	.ll-line__date {
+		> * {
 			opacity: 1;
 		}
 	}
 }
 
-.line__date {
+.ll-line__date {
 	position: absolute;
 	top: 0;
 	bottom: 0;

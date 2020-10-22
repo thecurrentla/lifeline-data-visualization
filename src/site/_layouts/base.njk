@@ -4,7 +4,6 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ title }}</title>
-    {# <link rel="stylesheet" href="https://thecurrentla.com/wp-content/themes/paperback-child/editor.css"> #}
     {% set css %}
     {% include "css/reset.css" %}
     {% include "css/lifeline.css" %}
@@ -23,5 +22,69 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
   <script>
     {{ js | safe }}
+  </script>
+  <script>
+    document
+      .querySelectorAll(".ll-line")
+      .forEach(function (line) {
+        line.addEventListener("click", function (event) {
+          console.log(line.dataset.date);
+          document
+            .querySelectorAll(".ll-card[data-date][class*='ll-highlight']")
+            .forEach(function (item) {
+              item
+                .classList
+                .remove("ll-highlight-minor");
+              item
+                .classList
+                .remove("ll-highlight-major");
+            });
+          document
+            .querySelectorAll(".ll-card[data-date*='" + line.dataset.date.substr(0, 7) + "']")
+            .forEach(function (item) {
+              item
+                .classList
+                .add("ll-highlight-minor");
+            });
+          document
+            .querySelectorAll(".ll-card[data-date='" + line.dataset.date + "']")
+            .forEach(function (item) {
+              item
+                .classList
+                .add("ll-highlight-major");
+            });
+        });
+      });
+    document
+      .querySelectorAll(".ll-card")
+      .forEach(function (card) {
+        card.addEventListener("click", function (event) {
+          console.log(card.dataset.date);
+          document
+            .querySelectorAll(".ll-line[data-date][class*='ll-highlight']")
+            .forEach(function (item) {
+              item
+                .classList
+                .remove("ll-highlight-minor");
+              item
+                .classList
+                .remove("ll-highlight-major");
+            });
+          document
+            .querySelectorAll(".ll-line[data-date*='" + card.dataset.date.substr(0, 7) + "']")
+            .forEach(function (item) {
+              item
+                .classList
+                .add("ll-highlight-minor");
+            });
+          document
+            .querySelectorAll(".ll-line[data-date='" + card.dataset.date + "']")
+            .forEach(function (item) {
+              item
+                .classList
+                .add("ll-highlight-major");
+            });
+        });
+      });
   </script>
 </html>

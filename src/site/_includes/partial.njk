@@ -1,13 +1,13 @@
-<section class="lifeline" id="lifeline-embed">
-  <div class="lifeline-wrapper" data-lifeline-active-category="intro">
-    <header class="lifeline-header">
-      <nav class="lifeline-nav" aria-label="Main Menu">
+<section class="ll" id="lifeline-embed">
+  <div class="ll-wrapper" data-lifeline-active-category="intro">
+    <header class="ll-header">
+      <nav class="ll-nav" aria-label="Main Menu">
         {% include "nav-links.njk" %}
       </nav>
     </header>
 
-    <section class="lifeline-column-wrapper">
-      <div class="lifeline-column column-card">
+    <section class="ll-column-wrapper">
+      <div class="ll-column ll-column-card">
         {%- for category in categories -%}
           <section class="ll-card-category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
             <div class="ll-card-stack">
@@ -20,18 +20,18 @@
           </section>
         {%- endfor -%}
       </div>
-      <div class="lifeline-column column-graph">
-        <table class="graph-wrapper" style="--ll-count-total: {{ stat_totals.largest }}">
+      <div class="ll-column ll-column-graph">
+        <table class="ll-graph-wrapper" style="--ll-count-total: {{ stat_totals.largest }}">
           <thead class="visually-hidden sr-only screen-reader-text">
             <th>Date</th>
             {% for category in categories %}
               <th>Date</th>
             {% endfor %}
           </thead>
-          <tbody class="graph">
+          <tbody class="ll-graph">
             {%- for item in stats -%}
-              <tr class="line" data-date="{{ item.date_num }}">
-                <td class="line__date">
+              <tr class="ll-line" data-date="{{ item.date_num }}">
+                <td class="ll-line__date">
                   <span class="date" data-day-of-week="{{ item.day | truncate(1, true, " ") }}">{{ item.date_short }}</span>
                 </td>
                 {% for category in categories %}
@@ -47,7 +47,7 @@
                   {% if category.slug == "financial" %}
                     {% set amount = item.financial %}
                   {% endif %}
-                  <td class="line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
+                  <td class="ll-line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
                     <span class="visually-hidden">
                       {{ category.name }}:
                       {{ amount }}
@@ -62,8 +62,8 @@
       </div>
     </section>
 
-    <footer class="lifeline-footer">
-      <nav class="lifeline-nav" aria-label="Categories">
+    <footer class="ll-footer">
+      <nav class="ll-nav" aria-label="Categories">
         {% include "nav-links.njk" %}
       </nav>
     </footer>

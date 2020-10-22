@@ -1,9 +1,9 @@
 function setActiveCategory(category) {
-	document.querySelectorAll("[data-lifeline-category].active").forEach(function (item) {
-		item.classList.remove("active");
+	document.querySelectorAll("[data-lifeline-category].ll-active").forEach(function (item) {
+		item.classList.remove("ll-active");
 	});
 	document.querySelectorAll('[data-lifeline-category="' + category + '"]').forEach(function (item) {
-		item.classList.add("active");
+		item.classList.add("ll-active");
 	});
 	document.querySelectorAll("[data-lifeline-active-category]").forEach(function (item) {
 		item.dataset.lifelineActiveCategory = category;
@@ -18,19 +18,19 @@ function setScrollAnimation() {
 		trigger.kill();
 	});
 
-	var graph_dimensions = document.querySelector(".graph").getBoundingClientRect();
-	var cards_dimensions = document.querySelector(".active .ll-card-stack").getBoundingClientRect();
+	var graph_dimensions = document.querySelector(".ll-graph").getBoundingClientRect();
+	var cards_dimensions = document.querySelector(".ll-active .ll-card-stack").getBoundingClientRect();
 
 	if (graph_dimensions.height < cards_dimensions.height) {
-		var triggering_column = ".active .ll-card-stack";
-		var scrolling_column = ".graph";
+		var triggering_column = ".ll-active .ll-card-stack";
+		var scrolling_column = ".ll-graph";
 	} else {
-		var triggering_column = ".graph";
-		var scrolling_column = ".active .ll-card-stack";
+		var triggering_column = ".ll-graph";
+		var scrolling_column = ".ll-active .ll-card-stack";
 	}
 
-	// var triggering_column = ".column-graph";
-	// var scrolling_column = ".active .ll-card-stack";
+	// var triggering_column = ".ll-column-graph";
+	// var scrolling_column = ".ll-active .ll-card-stack";
 
 	// console.log("graph_dimensions: " + scrolling_column);
 	// console.table(graph_dimensions);
@@ -68,18 +68,12 @@ function setScrollAnimation() {
 
 document.querySelectorAll("a[href][data-lifeline-category]").forEach(function (button) {
 	button.addEventListener("click", function (event) {
-		if (button.classList.contains("active")) {
+		if (button.classList.contains("ll-active")) {
 			event.preventDefault();
 		} else {
 			setActiveCategory(event.target.dataset.lifelineCategory);
 		}
-		document.querySelector(".lifeline-header").scrollIntoView();
-	});
-});
-
-document.querySelectorAll(".line").forEach(function (line) {
-	line.addEventListener("click", function (event) {
-		console.log(line.dataset.date);
+		document.querySelector(".ll-header").scrollIntoView();
 	});
 });
 
