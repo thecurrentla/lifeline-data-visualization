@@ -67,6 +67,9 @@ $card-offset: 3vw;
 	display: flex;
 	flex-flow: column;
 	align-items: flex-end;
+	@media screen and (min-width: 992px) {
+		padding-left: 1rem;
+	}
 }
 .card-group > * + * {
 	margin-top: 1.25rem;
@@ -76,7 +79,7 @@ $card-offset: 3vw;
 	position: relative;
 	max-width: 75%;
 	padding: 1rem;
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 992px) {
 		max-width: 60ch;
 		padding: 1.5rem;
 	}
@@ -137,7 +140,7 @@ $card-offset: 3vw;
 }
 
 .card--news {
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 992px) {
 		margin-right: $card-offset;
 	}
 
@@ -156,7 +159,7 @@ $card-offset: 3vw;
 }
 
 .card--call {
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 992px) {
 		margin-left: $card-offset;
 	}
 
