@@ -32,27 +32,50 @@
 // Columns
 
 .lifeline-column-wrapper {
-	display: flex;
-	flex-flow: row nowrap;
-	overflow-x: hidden;
+	// display: flex;
+	// flex-flow: row nowrap;
+	// align-items: flex-start;
+	// justify-content: center;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
+	@media screen and (min-width: 992px) {
+		grid-template-columns: 3fr 2fr;
+	}
+
+	width: 100%;
+	padding: 2rem 0 1rem;
+	overflow: hidden;
 }
 .lifeline-column {
-	overflow-x: hidden;
-	padding: 1rem 0.5rem;
-}
-.column-graph {
-	flex-grow: 1;
-	flex-basis: 20%;
-
-	@media screen and (min-width: 768px) {
-		flex-basis: 30%;
-		padding-top: 5rem;
+	position: relative;
+	grid-row: 1 / -1;
+	grid-column: 1 / -1;
+	@media screen and (min-width: 992px) {
+		grid-row: unset;
+		grid-column: unset;
 	}
-	@media screen and (min-width: 1200px) {
-		flex-basis: 50%;
-		padding-top: 10rem;
-	}
+	overflow: hidden;
+	max-width: 125ch;
 }
 .column-card {
-	flex-basis: 60%;
+	z-index: 2;
+	flex-basis: auto;
+	padding-top: 1rem;
+	mix-blend-mode: screen;
+	@media screen and (min-width: 992px) {
+		mix-blend-mode: normal;
+	}
+}
+
+.column-graph {
+	flex-basis: 20%;
+	z-index: 1;
+
+	@media screen and (min-width: 768px) {
+		padding-top: 2rem;
+	}
+	@media screen and (min-width: 1200px) {
+		padding-top: 4rem;
+	}
 }

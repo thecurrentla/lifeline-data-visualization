@@ -18,11 +18,14 @@
 .lifeline-intro {
 	position: relative;
 	max-width: 60ch;
-	padding: 1.5rem 2rem;
 	margin: 2rem auto 0;
-
-	border: 2px solid var(--ll-accent-color);
+}
+.lifeline-intro-inner {
+	padding: 1.5rem 2rem;
+	border: 2px solid var(--ll-text-color);
 	border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.75);
+	filter: drop-shadow(0 0 2px rgba(58, 58, 58, 0.25));
 
 	font-size: 1.25rem;
 	font-style: italic;
@@ -34,6 +37,8 @@
 
 // =========================================
 // Content
+
+$card-offset: 3vw;
 
 .cards {
 	position: relative;
@@ -59,7 +64,9 @@
 }
 
 .card-group {
-	padding: 0 1rem;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-end;
 }
 .card-group > * + * {
 	margin-top: 1.25rem;
@@ -67,7 +74,13 @@
 
 .card {
 	position: relative;
-	padding: 1.5rem;
+	max-width: 75%;
+	padding: 1rem;
+	@media screen and (min-width: 768px) {
+		max-width: 60ch;
+		padding: 1.5rem;
+	}
+	margin-left: auto;
 
 	--ll-link-color: currentColor;
 	--ll-link-color-hover: var(--ll-text-color);
@@ -85,10 +98,12 @@
 }
 
 .card--news {
-	margin-right: 10%;
+	@media screen and (min-width: 768px) {
+		margin-right: $card-offset;
+	}
 
-	background-color: rgba(255, 255, 255, 1);
-	filter: drop-shadow(0 0 2px rgba(58, 58, 58, 0.35));
+	background-color: rgba(255, 255, 255, 0.5);
+	filter: drop-shadow(0 0 2px rgba(58, 58, 58, 0.4));
 }
 .card--news__title {
 	font-size: 1.2em;
@@ -102,10 +117,12 @@
 }
 
 .card--call {
-	margin-left: 10%;
+	@media screen and (min-width: 768px) {
+		margin-left: $card-offset;
+	}
 
 	color: white;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.67);
 	border: 2px solid rgba(255, 255, 255, 0.9);
 
 	border-radius: 1.5rem;
