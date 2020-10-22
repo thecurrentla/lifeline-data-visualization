@@ -28,22 +28,22 @@
 	padding: 1rem 1.5rem;
 }
 
-.layout-wrapper {
+.lifeline-column-wrapper {
 	display: flex;
 	flex-flow: row nowrap;
 	overflow-x: hidden;
 }
-.layout-wrapper > * {
+.lifeline-column-wrapper > * {
 	flex-basis: 50%;
 }
 
-.container {
+.lifeline-column {
 	overflow-x: hidden;
 	padding: 4rem 0.5rem;
 }
-.graph-container {
+.column-graph {
 	order: 1;
 }
-.content-container {
+.column-cards {
 	order: 2;
 }

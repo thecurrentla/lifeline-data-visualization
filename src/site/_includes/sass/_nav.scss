@@ -8,7 +8,7 @@ button {
 
 	color: white;
 	background-color: $text-color;
-	background-color: var(--text-color);
+	background-color: var(--ll-text-color);
 	border-radius: 2px;
 
 	font-size: 1.15rem;
@@ -19,20 +19,20 @@ button {
 	&:active,
 	&:focus {
 		outline-color: $text-color;
-		outline-color: var(--text-color);
+		outline-color: var(--ll-text-color);
 		background-color: $accent-color;
-		background-color: var(--accent-color);
+		background-color: var(--ll-accent-color);
 	}
 }
 a.button,
 button {
 	&.active {
 		box-shadow: 0 0 0 0.25rem $text-color;
-		box-shadow: 0 0 0 0.25rem var(--text-color);
+		box-shadow: 0 0 0 0.25rem var(--ll-text-color);
 		outline-color: $text-color;
-		outline-color: var(--text-color);
+		outline-color: var(--ll-text-color);
 		background-color: $accent-color;
-		background-color: var(--accent-color);
+		background-color: var(--ll-accent-color);
 	}
 }
 

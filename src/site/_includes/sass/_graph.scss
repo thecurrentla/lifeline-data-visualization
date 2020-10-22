@@ -2,22 +2,22 @@
 	display: grid;
 	grid-gap: 2px;
 
-	--count-total: 200;
+	--ll-count-total: 200;
 }
 .line {
 	position: relative;
 
 	display: grid;
 	grid-gap: 2px;
-	grid-template-columns: repeat(var(--count-total), 1fr);
+	grid-template-columns: repeat(var(--ll-count-total), 1fr);
 	align-items: center;
 
 	height: 2ch;
 
-	--date-width: 9ch;
-	padding-left: var(--date-width);
-	--number-width: 4ch;
-	padding-right: var(--number-width);
+	--ll-date-width: 7ch;
+	padding-left: var(--ll-date-width);
+	--ll-number-width: 4ch;
+	padding-right: var(--ll-number-width);
 
 	font-size: $font-size-mono;
 	font-family: $font-family-mono;
@@ -27,22 +27,22 @@
 }
 
 .line__display {
-	grid-column: 1 / var(--count);
+	grid-column: 1 / var(--ll-count);
 	grid-row: 1 / -1;
 
 	&[data-count="0"] {
 		grid-column: 1 / 1;
 	}
 
-	opacity: var(--line-opacity, 0);
-	transform: scaleX(var(--line-opacity, 0));
+	opacity: var(--ll-line-opacity, 0);
+	transform: scaleX(var(--ll-line-opacity, 0));
 
 	transform-origin: center left;
 
-	--accent-opacity: calc((var(--count) * 0.005) + 0.25);
+	--ll-accent-opacity: calc((var(--ll-count) * 0.005) + 0.25);
 
 	background-color: $accent-color;
-	background-color: var(--accent-color, #{$accent-color});
+	background-color: var(--ll-accent-color, #{$accent-color});
 
 	height: 2ch;
 
@@ -76,12 +76,18 @@
 	bottom: 0;
 	left: 0;
 
-	width: var(--date-width);
-	padding-right: 1ch;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: flex-end;
+
+	width: var(--ll-date-width);
 
 	background-color: rgba(255, 255, 255, 0.9);
+
 	> * {
 		opacity: 0.5;
+		margin-right: 0.75ch;
 	}
 
 	text-align: right;

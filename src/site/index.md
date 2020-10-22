@@ -1,4 +1,4 @@
 ---
 title: Life on the line
-layout: base
+layout: partial
 ---

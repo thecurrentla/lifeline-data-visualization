@@ -1,7 +1,7 @@
 // =========================================
 // Categories
 
-.category-desc-wrapper {
+.lifeline-intro-wrapper {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -10,18 +10,18 @@
 	> * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
-		opacity: var(--line-opacity, 0);
+		opacity: var(--ll-line-opacity, 0);
 
 		@include transition-basic($property: opacity);
 	}
 }
-.category-desc {
+.lifeline-intro {
 	position: relative;
 	max-width: 60ch;
 	padding: 1.5rem 2rem;
 	margin: 2rem auto 0;
 
-	border: 2px solid var(--accent-color);
+	border: 2px solid var(--ll-accent-color);
 	border-radius: 2px;
 
 	font-size: 1.25rem;
@@ -35,20 +35,20 @@
 // =========================================
 // Content
 
-.content {
+.cards {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 }
-.content > * {
+.cards > * {
 	grid-column: 1 / -1;
 	grid-row: 1 / -1;
 	opacity: 0;
 
 	@include transition-basic($property: opacity);
 }
-.content > *.active {
+.cards > *.active {
 	z-index: 50;
 	opacity: 1;
 }
@@ -56,7 +56,7 @@
 .card-group {
 	padding: 0 1rem;
 
-	transform: translateX(var(--card-transform, 100%));
+	transform: translateX(var(--ll-card-transform, 100%));
 
 	transform-origin: center right;
 
@@ -72,8 +72,8 @@
 	position: relative;
 	padding: 1.25rem;
 
-	--link-color: var(--text-color);
-	--link-color-hover: var(--text-color);
+	--ll-link-color: var(--ll-text-color);
+	--ll-link-color-hover: var(--ll-text-color);
 }
 .card > * + * {
 	margin-top: 0.75rem;

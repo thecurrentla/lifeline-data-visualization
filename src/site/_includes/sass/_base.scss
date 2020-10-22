@@ -1,14 +1,14 @@
 a {
-	color: var(--link-color);
+	color: var(--ll-link-color);
 }
 a:hover {
-	color: var(--link-color-hover);
+	color: var(--ll-link-color-hover);
 }
 a:focus {
-	color: var(--link-color-hover);
+	color: var(--ll-link-color-hover);
 }
 a:active {
-	color: var(--link-color-hover);
+	color: var(--ll-link-color-hover);
 }
 a:hover,
 a:focus,
@@ -22,50 +22,4 @@ a.button {
 a,
 button {
 	@include transition-basic;
-}
-
-// =========================================
-// Swatches
-
-.category-health {
-	--text-color: #{$text-color-health};
-	--accent-color: hsla(0, 75%, 50%, var(--accent-opacity, 1));
-}
-.category-food {
-	--text-color: #{$text-color-food};
-	--accent-color: hsla(40, 100%, 50%, var(--accent-opacity, 1));
-}
-.category-housing {
-	--text-color: #{$text-color-housing};
-	--accent-color: hsla(240, 100%, 50%, var(--accent-opacity, 1));
-}
-.category-financial {
-	--text-color: #{$text-color-financial};
-	--accent-color: hsla(120, 100%, 25%, var(--accent-opacity, 1));
-}
-
-.lifeline-wrapper[data-active-category*="intro"] .category-intro {
-	--line-opacity: 1;
-	--card-transform: 0;
-	--intro-display: block;
-}
-.lifeline-wrapper[data-active-category="health"] .category-health {
-	--line-opacity: 1;
-	--card-transform: 0;
-	--intro-display: block;
-}
-.lifeline-wrapper[data-active-category="food"] .category-food {
-	--line-opacity: 1;
-	--card-transform: 0;
-	--intro-display: block;
-}
-.lifeline-wrapper[data-active-category="housing"] .category-housing {
-	--line-opacity: 1;
-	--card-transform: 0;
-	--intro-display: block;
-}
-.lifeline-wrapper[data-active-category="financial"] .category-financial {
-	--line-opacity: 1;
-	--card-transform: 0;
-	--intro-display: block;
 }
