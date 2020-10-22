@@ -14,6 +14,7 @@ function setActiveCategory(category) {
 
 function setScrollAnimation() {
 	ScrollTrigger.getAll().forEach(function (trigger) {
+		console.log(trigger);
 		trigger.kill();
 	});
 
@@ -61,7 +62,6 @@ function setScrollAnimation() {
 			start: "top 5%",
 			end: "bottom 95%",
 			scrub: 0.1,
-			markers: true,
 		},
 	});
 }

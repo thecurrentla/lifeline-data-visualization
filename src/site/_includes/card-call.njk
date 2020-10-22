@@ -1,14 +1,16 @@
 <article class="card card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
   <div class="card--{{ item.type }}__meta card--{{ item.type }}__header">
-    <span class="date">{{ item.date_medium }}</span>
-    {% if item.time %}
-      <span class="time">{{ item.time }}</span>
-    {% endif %}
+    <div class="datetime">
+      <span class="date">{{ item.date_medium }}</span>
+      {% if item.time %}
+        <span class="time">{{ item.time }}</span>
+      {% endif %}
+    </div>
     {% if item.parish %}
-      <span class="parish">
+      <div class="parish">
         {{ item.parish }}
         Parish
-      </span>
+      </div>
     {% endif %}
   </div>
   <div class="card--{{ item.type }}__content">

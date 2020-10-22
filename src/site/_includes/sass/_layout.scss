@@ -75,14 +75,17 @@
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
 
-		@include transition-basic($duration: 250ms, $property: "transform, opacity");
+		transform-origin: center right;
+
+		transition-property: transform, opacity;
+		transition-duration: 250ms;
+		transition-timing-function: ease-out;
 	}
 	> *.active {
 		z-index: 50;
-		opacity: 1;
 
+		opacity: 1;
 		transform: translateX(var(--ll-card-transform, 100%));
-		transform-origin: center right;
 	}
 }
 
@@ -91,4 +94,6 @@
 
 	align-items: center;
 	justify-items: stretch;
+	padding-top: 10%;
+	padding-bottom: 10%;
 }
