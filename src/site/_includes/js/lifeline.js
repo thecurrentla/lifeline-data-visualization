@@ -73,19 +73,20 @@ document.querySelectorAll("a[href][data-ll-category]").forEach(function (link) {
 	});
 });
 
-var categories = ["health", "housing", "food", "financial"];
 if (window.location.hash) {
-	var category = null;
+	var categories = ["health", "housing", "food", "financial"];
+	var active_category = null;
+
 	var id = window.location.hash.replace("#", "");
 	var hash_array = id.split("-");
 
 	hash_array.forEach((item) => {
 		if (categories.includes(item)) {
-			category = item;
+			active_category = item;
 		}
 	});
 
-	if (category) {
-		setActiveCategory(category);
+	if (active_category) {
+		setActiveCategory(active_category);
 	}
 }
