@@ -1,15 +1,17 @@
 {% set card_id %}
-{{ item.type ~ "-" ~ category.slug ~ "-" ~ item.date_slug ~ "-" ~ item.time | replace(":", "") }}
+{{ category.slug ~ "-" ~ item.type ~ "-" ~ item.date_slug }}
 {% endset %}
+{% if item.time %}
+  {% set card_id = card_id  ~ "-" ~ item.time | replace(":", "") %}
+{% endif %}
 
 {% set datetime %}
-{% if item.time %}
-		{{ item.date_long ~ ", " ~ item.time }}
-{% else %}
-		{{ item.date_long }}
-{% endif %}
+{{ item.date_long }}
 {% endset %}
+{% if item.time %}
+  {% set datetime = datetime ~ ", " ~ item.time %}
+{% endif %}
 
 <article class="ll-card ll-card--{{ item.type }}" data-ll-date="{{ item.date_num }}" id="{{ card_id | slug }}">
-		{% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 </article>

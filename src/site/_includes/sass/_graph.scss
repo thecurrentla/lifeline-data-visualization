@@ -28,6 +28,8 @@ $graph-label-base-opacity: 0.5;
 
 	--ll-date-width: 6ch;
 	--ll-number-width: 4ch;
+	--ll-accent-color-opacity: calc((var(--ll-count) * 0.005) + 0.25);
+	--ll-background-color: hsla(var(--ll-accent-color-hsl), var(--ll-accent-color-opacity, 1));
 
 	@supports (display: grid) {
 		display: grid;
@@ -52,18 +54,20 @@ $graph-label-base-opacity: 0.5;
 		content: "Calls per Day";
 		position: absolute;
 		bottom: 100%;
+		right: 0;
 
 		width: 50px;
 		width: var(--ll-date-width);
-		padding: 0.5em 0;
+		// padding: 0.55em 0.25em 0.5em;
+		margin: 0.5em 0;
 
-		color: var(--ll-text-color);
+		// background-color: var(--ll-background-color);
 
 		@supports (writing-mode: vertical-lr) {
 			width: unset;
 			height: 150px;
 			height: max-content;
-			padding: 0.75em 0;
+			margin: 0.75em 0;
 
 			writing-mode: vertical-lr;
 		}
@@ -134,9 +138,8 @@ $graph-label-base-opacity: 0.5;
 		&[data-ll-count="0"] {
 			grid-column: 1 / 1;
 		}
-		--ll-accent-color-opacity: calc((var(--ll-count) * 0.005) + 0.25);
-		background-color: $accent-color;
-		background-color: hsla(var(--ll-accent-color-hsl), var(--ll-accent-color-opacity, 1));
+
+		background-color: var(--ll-background-color);
 	}
 
 	.js & {

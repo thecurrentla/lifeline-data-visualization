@@ -27,21 +27,22 @@ document.querySelectorAll(".ll-category").forEach(function (category) {
 		},
 	];
 
-	console.group(category_name);
+	// console.group(category_name);
 
 	columns.forEach(function (column) {
-		console.table(column);
+		// console.table(column);
 
 		var scroller_dimensions = document.querySelector(column.scroller).getBoundingClientRect();
 		var trigger_dimensions = document.querySelector(column.trigger).getBoundingClientRect();
 
-		console.table(trigger_dimensions);
-		console.table(scroller_dimensions);
+		// console.table(trigger_dimensions);
+		// console.table(scroller_dimensions);
 
 		var distance = trigger_dimensions.bottom - scroller_dimensions.bottom;
-		console.log(distance);
+		// console.log(distance);
+
 		distance = "+=" + distance;
-		console.log(distance);
+		// console.log(distance);
 
 		gsap.to(column.scroller, {
 			// yPercent: 50,
@@ -56,7 +57,7 @@ document.querySelectorAll(".ll-category").forEach(function (category) {
 			},
 		});
 	});
-	console.groupEnd(category_name);
+	// console.groupEnd(category_name);
 });
 
 document.querySelectorAll("a[href][data-ll-category]").forEach(function (link) {
@@ -72,11 +73,19 @@ document.querySelectorAll("a[href][data-ll-category]").forEach(function (link) {
 	});
 });
 
+var categories = ["health", "housing", "food", "financial"];
 if (window.location.hash) {
+	var category = null;
 	var id = window.location.hash.replace("#", "");
-	var category = id.split("-");
-	// window.location.hash = category;
-	setActiveCategory(category);
-	console.log(id);
-	console.log(category);
+	var hash_array = id.split("-");
+
+	hash_array.forEach((item) => {
+		if (categories.includes(item)) {
+			category = item;
+		}
+	});
+
+	if (category) {
+		setActiveCategory(category);
+	}
 }
