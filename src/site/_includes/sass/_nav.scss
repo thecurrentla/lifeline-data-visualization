@@ -10,10 +10,14 @@ button {
 	border-color: $text-color;
 	border-color: var(--ll-text-color);
 	background-color: transparent;
+	outline-color: transparent;
 
 	border-width: 2px;
 	border-style: solid;
 	border-radius: 2px;
+
+	outline-style: solid;
+	outline-width: 2px;
 
 	font-size: 1.15rem;
 	font-weight: bold;
@@ -23,8 +27,8 @@ button {
 	&:active,
 	&:focus {
 		color: white;
-		outline-color: $accent-color;
-		outline-color: var(--ll-accent-color);
+		outline-color: $text-color;
+		outline-color: var(--ll-text-color);
 		border-color: $accent-color;
 		border-color: var(--ll-accent-color);
 		background-color: $accent-color;
