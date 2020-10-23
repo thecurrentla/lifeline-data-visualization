@@ -1,5 +1,5 @@
 {% for category in categories %}
-  <a class="button category-{{ category.slug }}" href="#{{ category.slug }}" data-lifeline-category="{{ category.slug }}">
-    {{ category.name }}
-  </a>
+		<a class="button ll-category--{{ category.slug }}" href="#{{ category.slug }}" data-ll-category="{{ category.slug }}">
+				{{ category.name }}
+		</a>
 {% endfor %}

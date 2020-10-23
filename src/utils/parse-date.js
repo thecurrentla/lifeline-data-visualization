@@ -12,6 +12,7 @@ module.exports = (date, time) => {
 	var date_obj = dayjs(date, "MM/DD/YYYY").toObject();
 
 	var date_unix = new Date(date);
+	var date_datetime = dayjs(date, "MM/DD/YYYY").format();
 	var date_num = dayjs(date, "MM/DD/YYYY").format("YYYYMMDD");
 	var date_slug = dayjs(date, "MM/DD/YYYY").format("MMM-DD");
 	var date_short = dayjs(date, "MM/DD/YYYY").format("M/D");
@@ -29,6 +30,7 @@ module.exports = (date, time) => {
 
 	var dates = {
 		date_num: date_num,
+		date_datetime: date_datetime,
 		date_slug: date_slug,
 		date_short: date_short,
 		date_long: date_long,

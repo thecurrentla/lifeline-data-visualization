@@ -23,23 +23,28 @@ $accent-color-housing: hsla(240, 100%, 50%, 1);
 $text-color-financial: hsla(120, 100%, 15%, 1);
 $accent-color-financial: hsla(120, 100%, 30%, 1);
 
-:root {
+& {
 	--ll-text-color: hsla(0, 0%, 30%, 1);
 	--ll-accent-color: hsla(0, 0%, 60%, 1);
-
-	--ll-text-color-health: hsla(0, 75%, 35%, 1);
-	--ll-accent-color-health: hsla(0, 75%, 50%, 1);
-	--ll-accent-color-health-hsl: 0, 75%, 50%;
-
-	--ll-text-color-food: hsl(40, 100%, 35%);
-	--ll-accent-color-food: hsla(40, 100%, 50%, 1);
-	--ll-accent-color-food-hsl: 40, 100%, 50%;
-
-	--ll-text-color-housing: hsla(240, 100%, 35%, 1);
-	--ll-accent-color-housing: hsla(240, 100%, 50%, 1);
-	--ll-accent-color-housing-hsl: 240, 100%, 50%;
-
-	--ll-text-color-financial: hsla(120, 100%, 15%, 1);
-	--ll-accent-color-financial: hsla(120, 100%, 30%, 1);
-	--ll-accent-color-financial-hsl: 120, 100%, 25%;
+	--ll-accent-color-hsl: 0, 0%, 60%;
+}
+.ll-category--health {
+	--ll-text-color: hsla(0, 75%, 35%, 1);
+	--ll-accent-color: hsla(0, 75%, 50%, 1);
+	--ll-accent-color-hsl: 0, 75%, 50%;
+}
+.ll-category--food {
+	--ll-text-color: hsl(40, 100%, 35%);
+	--ll-accent-color: hsla(40, 100%, 50%, 1);
+	--ll-accent-color-hsl: 40, 100%, 50%;
+}
+.ll-category--housing {
+	--ll-text-color: hsla(240, 100%, 35%, 1);
+	--ll-accent-color: hsla(240, 100%, 50%, 1);
+	--ll-accent-color-hsl: 240, 100%, 50%;
+}
+.ll-category--financial {
+	--ll-text-color: hsla(120, 100%, 15%, 1);
+	--ll-accent-color: hsla(120, 100%, 30%, 1);
+	--ll-accent-color-hsl: 120, 100%, 25%;
 }

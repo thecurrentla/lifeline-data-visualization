@@ -18,7 +18,23 @@
 // =========================================
 // Columns
 
-.ll-column-wrapper {
+.ll-category-wrapper {
+	> * + * {
+		margin-top: 2rem;
+	}
+}
+.ll-category-wrapper--layered {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr;
+
+	> * {
+		grid-row: 1 / -1;
+		grid-column: 1 / -1;
+	}
+}
+.ll-category {
+	position: relative;
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr;
@@ -34,7 +50,14 @@
 	overflow: hidden;
 	align-items: stretch;
 }
-.ll-column {
+.ll-category.ll-active {
+	z-index: 40;
+	--ll-line-opacity: 1;
+	--ll-card-translate: 0;
+	--ll-card-rotate: 0deg;
+}
+
+.ll-category-column {
 	position: relative;
 	grid-row: 1 / -1;
 	grid-column: 1 / -1;
@@ -43,43 +66,29 @@
 		grid-column: unset;
 	}
 
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr;
-	align-items: start;
-
 	padding-top: 1rem;
 	overflow: hidden;
 }
 
-.ll-column-card {
+.ll-category-column--card {
 	z-index: 2;
 
 	justify-items: end;
 
 	> * {
-		opacity: 0;
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
+		opacity: var(--ll-line-opacity, 0%);
 
-		transform: translateX(var(--ll-card-transform, 100%)) rotateY(var(--ll-card-transform, 45deg));
+		transform: translateX(var(--ll-card-translate, 100%)) rotateY(var(--ll-card-rotate, 45deg));
 		transform-origin: center right;
 
 		transition-property: transform, opacity;
 		transition-duration: 250ms, 500ms;
 		transition-timing-function: ease-out;
 	}
-	> *.ll-active {
-		z-index: 50;
-
-		opacity: 1;
-	}
 }
 
-.ll-column-graph {
+.ll-category-column--graph {
 	z-index: 1;
 
-	align-items: center;
-	justify-items: stretch;
 	padding-top: 300px;
 }

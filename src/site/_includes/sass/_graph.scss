@@ -1,11 +1,15 @@
 .ll-graph {
+	width: 100%;
+	opacity: var(--ll-line-opacity, 0);
+}
+.ll-graph tbody {
 	display: grid;
 	grid-gap: 2px;
-
-	--ll-count-total: 200;
+	width: 100%;
 }
 .ll-line {
 	position: relative;
+	width: 100%;
 
 	display: grid;
 	grid-gap: 2px;
@@ -35,29 +39,28 @@
 }
 
 .ll-line__display {
+	position: relative;
 	grid-column: 1 / var(--ll-count);
 	grid-row: 1 / -1;
 
-	&[data-count="0"] {
+	&[data-ll-count="0"] {
 		grid-column: 1 / 1;
 	}
 
-	opacity: var(--ll-line-opacity, 0);
 	transform: scaleX(var(--ll-line-opacity, 0));
 
 	transform-origin: center left;
 
-	--ll-accent-opacity: calc((var(--ll-count) * 0.005) + 0.25);
-
+	--ll-accent-color-opacity: calc((var(--ll-count) * 0.005) + 0.25);
 	background-color: $accent-color;
-	background-color: var(--ll-accent-color, #{$accent-color});
+	background-color: hsla(var(--ll-accent-color-hsl), var(--ll-accent-color-opacity, 1));
 
 	height: 2ch;
 
 	@include transition-basic($duration: 500ms);
 }
-.ll-line__display:after {
-	content: attr(data-count);
+.ll-line__display::after {
+	content: attr(data-ll-count);
 	display: inline-block;
 	position: absolute;
 	top: 12.5%;
@@ -70,7 +73,7 @@
 	line-height: 1;
 	font-weight: bold;
 
-	opacity: 0;
+	// opacity: 0;
 
 	@include transition-basic;
 }
@@ -78,28 +81,14 @@
 	&:hover,
 	&:active,
 	&:focus {
-		.ll-line__display:after {
+		.ll-line__display::after {
 			opacity: 1;
 		}
 	}
 }
-.ll-line.ll-highlight-minor {
+.ll-line.ll-highlight {
 	color: var(--ll-text-color);
 
-	.ll-line__display {
-		filter: drop-shadow(0 0 0.5rem rgba(58, 58, 58, 0.25)) saturate(120%);
-	}
-	.ll-line__display::after {
-		opacity: 0.75;
-	}
-	.ll-line__date {
-		> * {
-			opacity: 0.75;
-		}
-	}
-}
-.ll-line.ll-highlight-major {
-	color: var(--ll-text-color);
 	.ll-line__display {
 		filter: drop-shadow(0 0 1rem rgba(58, 58, 58, 0.25)) saturate(180%);
 	}
@@ -134,9 +123,9 @@
 
 	text-align: right;
 
-	[data-day-of-week]::after {
+	[data-ll-day-of-week]::after {
 		@media screen and (min-width: 992px) {
-			content: attr(data-day-of-week);
+			content: attr(data-ll-day-of-week);
 			display: inline-block;
 			margin-left: 0.75ch;
 			font-weight: bold;

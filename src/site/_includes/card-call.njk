@@ -1,23 +1,13 @@
-{% set card_id %}
-{{ category.slug ~ "-" ~ item.date_slug ~ "-" ~ item.time | replace(":", "") }}
-{% endset %}
+{% extends "card.njk" %}
 
-{% set datetime %}
-{% if item.time %}
-  {{ item.date_long ~ ", " ~ item.time }}
-{% else %}
-  {{ item.date_long }}
-{% endif %}
-{% endset %}
-
-<article class="ll-card ll-card--{{ item.type }} category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}" id="{{ card_id | slug }}">
+{% block content %}
   <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
     <div class="ll-card-header">
       <div class="ll-card-parish">
         <small>{{ item.parish }}
           Parish</small>
       </div>
-      <time class="date">{{ datetime }}</time>
+      <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
     </div>
 
     <a class="ll-share-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
@@ -34,4 +24,4 @@
       {{ item.length | int }}
       min.</span>
   </div>
-</article>
+{% endblock %}

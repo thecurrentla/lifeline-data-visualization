@@ -1,4 +1,6 @@
-<article class="ll-card ll-card--{{ item.type }}  category-{{ category.slug }} date-{{ item.date_num }}" data-date="{{ item.date_num }}">
+{% extends "card.njk" %}
+
+{% block content %}
   <div class="ll-card--{{ item.type }}__date">
     <strong>{{ item.date_long }}</strong>
   </div>
@@ -18,4 +20,5 @@
       </p>
     </div>
   {% endif %}
-</article>
+
+{% endblock %}

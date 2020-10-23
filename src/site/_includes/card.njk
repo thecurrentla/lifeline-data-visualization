@@ -1,0 +1,15 @@
+{% set card_id %}
+{{ item.type ~ "-" ~ category.slug ~ "-" ~ item.date_slug ~ "-" ~ item.time | replace(":", "") }}
+{% endset %}
+
+{% set datetime %}
+{% if item.time %}
+		{{ item.date_long ~ ", " ~ item.time }}
+{% else %}
+		{{ item.date_long }}
+{% endif %}
+{% endset %}
+
+<article class="ll-card ll-card--{{ item.type }}" data-ll-date="{{ item.date_num }}" id="{{ card_id | slug }}">
+		{% block content %}{% endblock %}
+</article>

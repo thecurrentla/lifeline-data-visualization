@@ -1,66 +1,33 @@
-<section class="ll" id="lifeline-embed">
-  <div class="ll-wrapper" data-lifeline-active-category="intro">
+<section class="ll" id="ll-embed">
+  <div class="ll-wrapper">
     <header class="ll-header">
-      <nav class="ll-nav" aria-label="Main Menu">
+      <nav class="ll-nav" aria-label="Categories">
         {% include "nav-links.njk" %}
       </nav>
     </header>
 
-    <section class="ll-column-wrapper">
-      <div class="ll-column ll-column-card">
-        {%- for category in categories -%}
-          <section class="ll-card-category category-{{ category.slug }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-            <div class="ll-card-stack">
-              {%- for item in entries -%}
-                {%- if item.category == category.name or item.category == "All" -%}
-                  {% include "card-" ~ item.type ~ ".njk" %}
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-          </section>
-        {%- endfor -%}
-      </div>
-      <div class="ll-column ll-column-graph">
-        <table class="ll-graph-wrapper" style="--ll-count-total: {{ stat_totals.largest }}">
-          <thead class="visually-hidden sr-only screen-reader-text">
-            <th>Date</th>
-            {% for category in categories %}
-              <th>Date</th>
-            {% endfor %}
-          </thead>
-          <tbody class="ll-graph">
-            {%- for item in stats -%}
-              <tr class="ll-line" data-date="{{ item.date_num }}">
-                <td class="ll-line__date">
-                  <span class="date" data-day-of-week="{{ item.day | truncate(1, true, " ") }}">{{ item.date_short }}</span>
-                </td>
-                {% for category in categories %}
-                  {% if category.slug == "health" %}
-                    {% set amount = item.health %}
-                  {% endif %}
-                  {% if category.slug == "food" %}
-                    {% set amount = item.food %}
-                  {% endif %}
-                  {% if category.slug == "housing" %}
-                    {% set amount = item.housing %}
-                  {% endif %}
-                  {% if category.slug == "financial" %}
-                    {% set amount = item.financial %}
-                  {% endif %}
-                  <td class="ll-line__display category-{{ category.slug }}" style="--ll-count: {{ amount }};" data-count="{{ amount }}" data-lifeline-category="{{ category.slug }}" data-lifeline-active-category="intro">
-                    <span class="visually-hidden sr-only">
-                      {{ category.name }}:
-                      {{ amount }}
-                      Calls
-                    </span>
-                  </td>
+    <div class="ll-category-wrapper ll-category-wrapper--layered" style="--ll-count-total: {{ stat_totals.largest }}">
+      {%- for category in categories -%}
+        <section class="ll-category ll-category--{{ category.slug }}" data-ll-category="{{ category.slug }}" data-ll-category-active="intro" id="{{ category.slug }}">
+          <div class="ll-category-column ll-category-column--card">
+            <div class="ll-card-stack-wrapper">
+              <div class="ll-card-stack">
+                {%- for item in entries -%}
+                  {%- if item.category == category.name or item.category == "All" -%}
+                    {% include "card-" ~ item.type ~ ".njk" %}
+                  {%- endif -%}
                 {%- endfor -%}
-              </tr>
-            {%- endfor -%}
-          </tbody>
-        </table>
-      </div>
-    </section>
+              </div>
+            </div>
+          </div>
+          <div class="ll-category-column ll-category-column--graph">
+            <div class="ll-graph-wrapper">
+              {% include "graph.njk" %}
+            </div>
+          </div>
+        </section>
+      {%- endfor -%}
+    </div>
 
     <footer class="ll-footer">
       <nav class="ll-nav" aria-label="Categories">
