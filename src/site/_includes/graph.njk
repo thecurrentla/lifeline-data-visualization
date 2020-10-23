@@ -1,35 +1,43 @@
+{% set total = stat_totals.largest %}
+
 <table class="ll-graph">
-		<thead>
-				<tr class="visually-hidden sr-only screen-reader-text">
-						<th>Date</th>
-						<th>Calls</th>
-				</tr>
-		</thead>
-		<tbody>
-				{%- for item in stats -%}
-						{# {%- set count = item[category.slug] -%} #}
-						{% if category.slug == "health" %}
-								{% set count = item.health %}
-						{% endif %}
-						{% if category.slug == "food" %}
-								{% set count = item.food %}
-						{% endif %}
-						{% if category.slug == "housing" %}
-								{% set count = item.housing %}
-						{% endif %}
-						{% if category.slug == "financial" %}
-								{% set count = item.financial %}
-						{% endif %}
-						<tr class="ll-line" data-ll-date="{{ item.date_num }}">
-								<td class="ll-line__date">
-										<span data-ll-day-of-week="{{ item.day | truncate(1, true, " ") }}">
-												{{- item.date_short -}}
-										</span>
-								</td>
-								<td class="ll-line__display" style="--ll-count: {{ count }};" data-ll-count="{{ count }}">
-										<span class="visually-hidden sr-only screen-reader-text">{{ count }}</span>
-								</td>
-						</tr>
-				{%- endfor -%}
-		</tbody>
+  <thead>
+    <tr class="visually-hidden sr-only screen-reader-text">
+      <th>Date</th>
+      <th>Calls</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%- for item in stats -%}
+      {# {%- set count = item[category.slug] -%} #}
+
+      {% set count = "" %}
+      {% if category.slug == "health" %}
+        {% set count = item.health %}
+      {% endif %}
+      {% if category.slug == "food" %}
+        {% set count = item.food %}
+      {% endif %}
+      {% if category.slug == "housing" %}
+        {% set count = item.housing %}
+      {% endif %}
+      {% if category.slug == "financial" %}
+        {% set count = item.financial %}
+      {% endif %}
+
+      {% if count %}
+        <tr class="ll-line" data-ll-date="{{ item.date_num }}">
+          <td class="ll-line__date">
+            <time data-ll-day-of-week="{{ item.day | truncate(1, true, " ") }}" datetime="{{ item.datetime }}">
+              {{- item.date_short -}}
+            </time>
+          </td>
+          <td class="ll-line__display ll-accent-bg--{{ category.slug }}" width="{{ (count / total) * 100 }}" data-ll-count="{{ count }}" style="--ll-count: {{ count }};">
+            <span class="visually-hidden sr-only screen-reader-text">{{ count }}</span>
+          </td>
+        </tr>
+      {% endif %}
+
+    {%- endfor -%}
+  </tbody>
 </table>

@@ -8,8 +8,8 @@ $font-size-mono: 0.8rem;
 // =========================================
 // Colors
 
-$text-color: hsla(0, 0%, 30%, 1);
-$accent-color: hsla(0, 0%, 60%, 1);
+$text-color: hsl(191, 47%, 45%);
+$accent-color: hsl(190, 47%, 61%);
 
 $text-color-health: hsla(0, 75%, 35%, 1);
 $accent-color-health: hsla(0, 75%, 50%, 1);
@@ -24,9 +24,9 @@ $text-color-financial: hsla(120, 100%, 15%, 1);
 $accent-color-financial: hsla(120, 100%, 30%, 1);
 
 & {
-	--ll-text-color: hsla(0, 0%, 30%, 1);
-	--ll-accent-color: hsla(0, 0%, 60%, 1);
-	--ll-accent-color-hsl: 0, 0%, 60%;
+	--ll-text-color: hsl(191, 47%, 45%);
+	--ll-accent-color: hsl(190, 47%, 61%);
+	--ll-accent-color-hsl: 190, 47%, 61%;
 }
 .ll-category--health {
 	--ll-text-color: hsla(0, 75%, 35%, 1);
@@ -47,4 +47,17 @@ $accent-color-financial: hsla(120, 100%, 30%, 1);
 	--ll-text-color: hsla(120, 100%, 15%, 1);
 	--ll-accent-color: hsla(120, 100%, 30%, 1);
 	--ll-accent-color-hsl: 120, 100%, 25%;
+}
+
+.ll-accent-bg--health {
+	background-color: $accent-color-health;
+}
+.ll-accent-bg--food {
+	background-color: $accent-color-food;
+}
+.ll-accent-bg--housing {
+	background-color: $accent-color-housing;
+}
+.ll-accent-bg--financial {
+	background-color: $accent-color-financial;
 }

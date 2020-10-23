@@ -52,7 +52,7 @@ document.querySelectorAll(".ll-category").forEach(function (category) {
 				start: "top 5%",
 				end: "bottom 95%",
 				scrub: 0.1,
-				markers: true,
+				// markers: true,
 			},
 		});
 	});
