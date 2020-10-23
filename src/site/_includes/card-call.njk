@@ -3,10 +3,12 @@
 {% block content %}
   <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
     <div class="ll-card-header">
-      <div class="ll-card-parish">
-        <small>{{ item.parish }}
-          Parish</small>
-      </div>
+      {% if item.parish %}
+        <div class="ll-card-parish">
+          <small>{{ item.parish }}
+            Parish</small>
+        </div>
+      {% endif %}
       <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
     </div>
 
