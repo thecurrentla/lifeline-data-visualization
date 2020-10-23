@@ -144,6 +144,7 @@ $card-offset: 2%;
 	--card-border-radius: 1.5rem;
 
 	font-family: $font-family-mono;
+	line-height: 1.5;
 }
 .ll-card--call__header {
 	display: flex;
@@ -159,7 +160,8 @@ $card-offset: 2%;
 	font-size: 13px;
 }
 .ll-card--call__meta small {
-	font-weight: bolder;
+	font-size: 0.9em;
+	letter-spacing: normal;
 }
 .ll-card--call__content {
 	letter-spacing: -0.025em;
