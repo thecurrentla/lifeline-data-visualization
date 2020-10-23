@@ -1,14 +1,18 @@
 a.button[href],
 button {
-	-webkit-appearance: none;
 	appearance: none;
 
 	border-width: 0;
 	padding: 0.75rem 1.5rem;
 
-	color: white;
-	background-color: $text-color;
-	background-color: var(--ll-text-color);
+	color: $text-color;
+	color: var(--ll-text-color);
+	border-color: $text-color;
+	border-color: var(--ll-text-color);
+	background-color: transparent;
+
+	border-width: 2px;
+	border-style: solid;
 	border-radius: 2px;
 
 	font-size: 1.15rem;
@@ -18,19 +22,25 @@ button {
 	&:hover,
 	&:active,
 	&:focus {
-		outline-color: $text-color;
-		outline-color: var(--ll-text-color);
+		color: white;
+		outline-color: $accent-color;
+		outline-color: var(--ll-accent-color);
+		border-color: $accent-color;
+		border-color: var(--ll-accent-color);
 		background-color: $accent-color;
 		background-color: var(--ll-accent-color);
 	}
 }
 a.button[href],
 button {
-	&.active {
+	&.ll-active {
+		color: white;
 		box-shadow: 0 0 0 0.25rem $text-color;
 		box-shadow: 0 0 0 0.25rem var(--ll-text-color);
 		outline-color: $text-color;
 		outline-color: var(--ll-text-color);
+		border-color: $accent-color;
+		border-color: var(--ll-accent-color);
 		background-color: $accent-color;
 		background-color: var(--ll-accent-color);
 	}

@@ -90,3 +90,22 @@ if (window.location.hash) {
 		setActiveCategory(active_category);
 	}
 }
+
+if (!window.location.hash && "IntersectionObserver" in window) {
+	//Activate newsletter toast
+	let llObserver = new IntersectionObserver(
+		(entries, llObserver) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveCategory("health");
+					llObserver.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.5, rootMargin: "-25%" }
+	);
+
+	llObserver.observe(document.querySelector(".ll-nav--header"));
+} else if (!window.location.hash) {
+	setActiveCategory("health");
+}
