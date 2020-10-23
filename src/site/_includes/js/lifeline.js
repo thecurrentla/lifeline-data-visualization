@@ -78,9 +78,11 @@ document.querySelectorAll("a[href][data-lifeline-category]").forEach(function (b
 });
 
 if (window.location.hash) {
-	var category = window.location.hash.replace("#", "").split("-");
+	var id = window.location.hash.replace("#", "");
+	var category = id.split("-");
 	// window.location.hash = category;
-	setActiveCategory(category[0]);
+	setActiveCategory(category);
+	console.log(id);
 	console.log(category);
 
 	document.querySelectorAll(".ll-card.share-link").forEach(function (card) {
