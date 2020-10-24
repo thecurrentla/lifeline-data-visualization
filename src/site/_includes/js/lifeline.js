@@ -80,7 +80,7 @@ if (window.location.hash) {
 	var id = window.location.hash.replace("#", "");
 	var hash_array = id.split("-");
 
-	hash_array.forEach((item) => {
+	hash_array.forEach(function (item) {
 		if (categories.includes(item)) {
 			active_category = item;
 		}
