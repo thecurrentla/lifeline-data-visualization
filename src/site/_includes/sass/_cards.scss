@@ -133,6 +133,12 @@ $card-offset: 2%;
 	font-size: 1.2em;
 	text-transform: uppercase;
 	font-weight: bold;
+
+	h2,
+	h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 }
 .ll-card--news__content {
 	display: none;
