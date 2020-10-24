@@ -5,13 +5,15 @@
     <strong>{{ item.date_long }}</strong>
   </div>
   <div class="ll-card--{{ item.type }}__title">
-    {% if item.sourceurl %}
-      <a href="{{item.sourceurl}}">
+    <h3>
+      {% if item.sourceurl %}
+        <a href="{{item.sourceurl}}">
+          {{ item.headline }}
+        </a>
+      {% else %}
         {{ item.headline }}
-      </a>
-    {% else %}
-      {{ item.headline }}
-    {% endif %}
+      {% endif %}
+    </h3>
   </div>
   {% if item.text %}
     <div class="ll-card--{{ item.type }}__content">
@@ -20,5 +22,4 @@
       </p>
     </div>
   {% endif %}
-
 {% endblock %}

@@ -4,6 +4,9 @@
 {% if item.time %}
   {% set card_id = card_id  ~ "-" ~ item.time | replace(":", "") %}
 {% endif %}
+{% if item.sourcename %}
+  {% set card_id = card_id  ~ "-" ~ item.sourcename %}
+{% endif %}
 
 {% set datetime %}
 {{ item.date_long }}

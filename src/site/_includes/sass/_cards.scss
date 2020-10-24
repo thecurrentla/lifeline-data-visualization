@@ -5,26 +5,26 @@
 	@media screen and (min-width: 992px) {
 		padding-left: 1rem;
 	}
+	max-width: 60ch;
+	margin-left: auto;
 }
 .ll-card-stack > * + * {
 	margin-top: 1.25rem;
 }
 
-$card-offset: 2%;
+$card-offset: 5%;
 .ll-card {
 	position: relative;
 	padding: 1rem;
 	max-width: 75%;
 	margin-right: $card-offset;
-	margin-left: $card-offset;
 
 	@media screen and (min-width: 992px) {
-		width: 100%;
-		max-width: calc(100% - #{$card-offset * 2});
+		max-width: 85%;
 		padding: 1.5rem;
 	}
 	@media screen and (min-width: 1200px) {
-		width: 60ch;
+		padding: 2rem;
 	}
 
 	--ll-link-color: currentColor;
@@ -73,6 +73,13 @@ $card-offset: 2%;
 				backdrop-filter: blur(2px);
 			}
 		}
+
+		h2,
+		h3 {
+			margin-top: 0;
+			margin-bottom: 0;
+			color: var(--card-text-color, black);
+		}
 	}
 
 	transform-origin: center right;
@@ -83,9 +90,11 @@ $card-offset: 2%;
 }
 
 .ll-card--intro {
-	max-width: calc(85% - #{$card-offset});
-	margin-right: $card-offset / 2;
-	margin-left: $card-offset / 2;
+	max-width: 85%;
+	@media screen and (min-width: 992px) {
+		max-width: 100%;
+	}
+	margin-right: 0;
 
 	border-color: $accent-color;
 	border-color: var(--ll-accent-color);
@@ -101,11 +110,6 @@ $card-offset: 2%;
 
 	> * + * {
 		margin-top: 1rem;
-	}
-
-	h2,
-	h3 {
-		margin-top: 0;
 	}
 }
 .ll-card--intro__title {
@@ -132,8 +136,9 @@ $card-offset: 2%;
 }
 
 .ll-card--call {
+	max-width: 92.5%;
+	margin-right: $card-offset / 2;
 	@media screen and (min-width: 992px) {
-		margin-right: 0;
 	}
 
 	--ll-link-color: currentColor;
@@ -145,8 +150,12 @@ $card-offset: 2%;
 
 	--card-border-radius: 1.5rem;
 
-	font-family: $font-family-mono;
-	line-height: 1.5;
+	h2,
+	h3 {
+		font-size: inherit;
+		font-family: inherit;
+		line-height: inherit;
+	}
 }
 .ll-card--call__header {
 	display: flex;

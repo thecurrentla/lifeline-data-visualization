@@ -1,15 +1,17 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__header">
-    <div class="ll-card-header">
-      {% if item.parish %}
-        <div class="ll-card-parish">
-          <small>{{ item.parish }}
-            Parish</small>
-        </div>
-      {% endif %}
-      <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
+  <div class="ll-card-header ll-card--{{ item.type }}__header">
+    <div class="ll-card--{{ item.type }}__meta">
+      <h3>
+        {% if item.parish %}
+          <div class="ll-card-parish">
+            <small>{{ item.parish }}
+              Parish</small>
+          </div>
+        {% endif %}
+        <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
+      </h3>
     </div>
 
     <a class="ll-share-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
@@ -24,6 +26,7 @@
     <div class="ll-card-length">
       <small>Length:</small>
       {{ item.length | int }}
-      min.</span>
+      min.
+    </div>
   </div>
 {% endblock %}

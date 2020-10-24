@@ -1,11 +1,12 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="ll-card--{{ item.type }}__content">
+  <div class="ll-card--{{ item.type }}__title">
     <h2 class="">{{ category.name }}</h2>
+  </div>
+  <div class="ll-card--{{ item.type }}__content">
     <p>
       {{ item.text }}
     </p>
   </div>
-
 {% endblock %}

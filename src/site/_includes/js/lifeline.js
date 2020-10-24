@@ -92,7 +92,6 @@ if (window.location.hash) {
 }
 
 if (!window.location.hash && "IntersectionObserver" in window) {
-	//Activate newsletter toast
 	let llObserver = new IntersectionObserver(
 		(entries, llObserver) => {
 			entries.forEach((entry) => {

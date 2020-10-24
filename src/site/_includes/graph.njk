@@ -28,7 +28,7 @@
       {% if count %}
         <tr class="ll-line" data-ll-date="{{ item.date_num }}" style="--ll-count: {{ count }};">
           <td class="ll-line__date">
-            <time data-ll-day-of-week="{{ item.day | truncate(1, true, " ") }}" datetime="{{ item.datetime }}">
+            <time data-ll-day-of-week="{{ item.day | truncate(1, true, " ") }}" datetime="{{ item.date_datetime }}">
               {{- item.date_short -}}
             </time>
           </td>
