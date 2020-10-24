@@ -1,12 +1,14 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="ll-card--{{ item.type }}__title">
-    <h2 class="">{{ category.name }}</h2>
-  </div>
-  <div class="ll-card--{{ item.type }}__content">
-    <p>
-      {{ item.text }}
-    </p>
-  </div>
+  <header class="ll-card__header ll-card--{{ item.type }}__header">
+    <h2 class="ll-card__title ll-card--{{ item.type }}__title">
+      {{ category.name }}
+    </h2>
+    <strong>{{ category.total }}
+      calls</strong>
+  </header>
+  <p class="ll-card__content ll-card--{{ item.type }}__content">
+    {{ item.text }}
+  </p>
 {% endblock %}

@@ -66,8 +66,9 @@ document.querySelectorAll("a[href][data-ll-category]").forEach(function (link) {
 		if (link.classList.contains("ll-active")) {
 			event.preventDefault();
 		} else {
+			console.log(category);
 			removeActiveCategory(category);
-			document.querySelector(".ll-category--" + category).scrollIntoView();
+			document.querySelector(".ll-header-title").scrollIntoView();
 			setActiveCategory(category);
 		}
 	});

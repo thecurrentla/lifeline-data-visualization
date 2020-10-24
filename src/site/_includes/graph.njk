@@ -33,7 +33,9 @@
             </time>
           </td>
           <td class="ll-line__display ll-accent-bg--{{ category.slug }}" width="{{ (count / total) * 100 }}" data-ll-count="{{ count }}">
-            <span class="visually-hidden sr-only screen-reader-text">{{ count }}</span>
+            <span class="visually-hidden sr-only screen-reader-text">
+              {{ count }}
+            </span>
           </td>
         </tr>
       {% endif %}

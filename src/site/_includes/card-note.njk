@@ -1,18 +1,17 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="dateline">
-    {{ item.date_long }}
-  </div>
-  <div class="ll-card--{{ item.type }}__title">
-    <strong>{{ item.headline }}</strong>
-  </div>
+  <header class="ll-card__header ll-card--{{ item.type }}__header">
+    <time class="ll-card--{{ item.type }}__date" datetime="{{ item.date_long }}">
+      {{ item.date_long }}
+    </time>
+    <h3 class="ll-card--{{ item.type }}__title">
+      {{ item.headline }}
+    </h3>
+  </header>
   {% if item.text %}
-    <div class="ll-card--{{ item.type }}__content">
-      <p>
-        {{ item.text }}
-      </p>
-    </div>
+    <p class="ll-card--{{ item.type }}__content">
+      {{ item.text }}
+    </p>
   {% endif %}
-
 {% endblock %}

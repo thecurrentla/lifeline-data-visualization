@@ -5,26 +5,26 @@
 	@media screen and (min-width: 992px) {
 		padding-left: 1rem;
 	}
+
+	max-width: 60ch;
+	margin-left: auto;
 }
 .ll-card-stack > * + * {
 	margin-top: 1.25rem;
 }
 
-$card-offset: 2%;
+$card-offset: 5%;
 .ll-card {
 	position: relative;
-	padding: 1rem;
-	max-width: 75%;
-	margin-right: $card-offset;
-	margin-left: $card-offset;
 
+	max-width: 70%;
+	margin-left: auto;
+	padding: 1rem;
 	@media screen and (min-width: 992px) {
-		width: 100%;
-		max-width: calc(100% - #{$card-offset * 2});
+		max-width: 75%;
 		padding: 1.5rem;
 	}
 	@media screen and (min-width: 1200px) {
-		width: 60ch;
 	}
 
 	--ll-link-color: currentColor;
@@ -38,10 +38,6 @@ $card-offset: 2%;
 	a {
 		text-decoration-color: var(--ll-accent-color);
 		border-color: var(--ll-accent-color);
-	}
-
-	p:last-child {
-		margin: 0;
 	}
 
 	color: black;
@@ -73,29 +69,32 @@ $card-offset: 2%;
 				backdrop-filter: blur(2px);
 			}
 		}
-
-		h2,
-		h3 {
-			margin-top: 0;
-			margin-bottom: 0;
-			color: var(--card-text-color, black);
-		}
 	}
+
+	line-height: 1.5;
 
 	transform-origin: center right;
 	@include transition-basic;
 }
 .ll-card > *:not(.visually-hidden) + * {
-	margin-top: 0.75rem;
+	margin-top: var(--ll-flow-spacing, 0.75rem);
+}
+.ll-card__header > *:not(.visually-hidden) + * {
+	margin-top: var(--ll-flow-spacing, 0.25rem);
+}
+
+.ll-card__title {
+	margin-top: var(--ll-flow-spacing, 0);
+	margin-bottom: 0;
+	color: var(--card-text-color, black);
+	line-height: 1.2;
 }
 
 .ll-card--intro {
-	max-width: calc(85% - #{$card-offset});
-	margin-right: $card-offset / 2;
-	margin-left: $card-offset / 2;
-
-	border-color: $accent-color;
-	border-color: var(--ll-accent-color);
+	max-width: 85%;
+	@media screen and (min-width: 992px) {
+		max-width: 100%;
+	}
 
 	--card-border-radius: 4px;
 	--card-background-color: rgba(238, 238, 238, 0.6);
@@ -106,48 +105,38 @@ $card-offset: 2%;
 		padding: 1.5rem 2rem;
 	}
 
-	> * + * {
-		margin-top: 1rem;
-	}
-
-	h2,
-	h3 {
-		margin-top: 0;
-	}
-}
-.ll-card--intro__title {
+	--ll-flow-spacing: 1rem;
 }
 .ll-card--intro__content {
 	font-style: italic;
 }
 
 .ll-card--news {
+	margin-right: $card-offset;
+
 	--card-background-color: rgba(238, 238, 238, 0.67);
 	--card-shadow-color: rgba(58, 58, 58, 0.25);
-}
-.ll-card--news__date {
-	margin-bottom: -0.5em;
-	font-size: 13px;
 }
 .ll-card--news__title {
 	font-size: 1.2em;
 	text-transform: uppercase;
 	font-weight: bold;
-
-	h2,
-	h3 {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
 }
-.ll-card--news__content {
-	display: none;
+.ll-card--news__title {
+	font-size: 1.2em;
+}
+.ll-card--news__date {
+	font-size: 0.9em;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 .ll-card--call {
+	max-width: 80%;
 	@media screen and (min-width: 992px) {
-		margin-right: 0;
+		max-width: 85%;
 	}
+	margin-right: $card-offset / 2;
 
 	--ll-link-color: currentColor;
 	--ll-link-color-hover: var(--ll-accent-color);
@@ -157,14 +146,19 @@ $card-offset: 2%;
 	--card-shadow-color: rgba(255, 255, 255, 0.75);
 
 	--card-border-radius: 1.5rem;
+	font-size: inherit;
+	font-family: $font-family-mono;
+}
+.ll-card--call__header,
+.ll-card--call__footer {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 13px;
+	letter-spacing: -0.025em;
 
-	h2,
-	h3 {
-		color: var(--card-text-color, black);
-		font-size: inherit;
-		font-family: $font-family-mono;
-		line-height: 1.5;
-		margin: 0;
+	small {
+		font-size: 0.9em;
+		letter-spacing: normal;
 	}
 }
 .ll-card--call__header {
@@ -172,18 +166,15 @@ $card-offset: 2%;
 	flex-flow: row wrap;
 	align-items: flex-start;
 	justify-content: space-between;
+}
+.ll-card--call__title {
+	color: var(--card-text-color, black);
+	font-size: inherit;
+	font-family: $font-family-mono;
+	line-height: 1.5;
+	margin: 0;
+}
 
-	letter-spacing: -0.025em;
-}
-.ll-card--call__meta {
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 13px;
-}
-.ll-card--call__meta small {
-	font-size: 0.9em;
-	letter-spacing: normal;
-}
 .ll-card--call__content {
 	letter-spacing: -0.025em;
 }
@@ -197,4 +188,5 @@ $card-offset: 2%;
 
 .ll-share-link {
 	border-bottom-width: 0;
+	text-decoration: none;
 }

@@ -1,32 +1,28 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="ll-card-header ll-card--{{ item.type }}__header">
-    <div class="ll-card--{{ item.type }}__meta">
-      <h3>
-        {% if item.parish %}
-          <div class="ll-card-parish">
-            <small>{{ item.parish }}
-              Parish</small>
-          </div>
-        {% endif %}
-        <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
-      </h3>
-    </div>
+  <header class="ll-card__header ll-card--{{ item.type }}__header">
+    <h3 class="ll-card__title ll-card--{{ item.type }}__title">
+      {% if item.parish %}
+        <div class="ll-card-parish">
+          <small>{{ item.parish }}
+            Parish</small>
+        </div>
+      {% endif %}
+      <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
+    </h3>
 
     <a class="ll-share-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
-      <i class="fa fa-link" aria-hidden="true"></i>
-      <span class="sr-only">Share</span>
+      <i class="fa fa-link" aria-hidden="true">🔗</i>
+      <span class="sr-only visually-hidden">Share</span>
     </a>
-  </div>
-  <div class="ll-card--{{ item.type }}__content">
-    <p>{{ item.text }}</p>
-  </div>
-  <div class="ll-card--{{ item.type }}__meta ll-card--{{ item.type }}__footer">
-    <div class="ll-card-length">
-      <small>Length:</small>
-      {{ item.length | int }}
-      min.
-    </div>
-  </div>
+  </header>
+  <p class="ll-card__content ll-card--{{ item.type }}__content">
+    {{ item.text }}
+  </p>
+  <footer class="ll-card__footer ll-card--{{ item.type }}__footer">
+    <small>Length:</small>
+    <time datetime="{{ item.length | int }} Minutes">{{ item.length | int }}
+      min.</time>
+  </footer>
 {% endblock %}

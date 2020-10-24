@@ -13,9 +13,9 @@
       </nav>
     </header>
 
-    <div class="ll-category-wrapper ll-category-wrapper--layered" style="--ll-count-total: {{ stat_totals.largest }}">
+    <div class="ll-category-wrapper ll-category-wrapper--layered">
       {%- for category in categories -%}
-        <section class="ll-category ll-category--{{ category.slug }}" data-ll-category="{{ category.slug }}" data-ll-category-active="intro" id="{{ category.slug }}">
+        <section class="ll-category ll-category--{{ category.slug }}" data-ll-category="{{ category.slug }}" data-ll-category-active="intro" id="{{ category.slug }}" style="--ll-count-total: {{ category.largest }}">
           <div class="ll-category-column ll-category-column--card">
             <div class="ll-card-stack-wrapper">
               <div class="ll-card-stack">

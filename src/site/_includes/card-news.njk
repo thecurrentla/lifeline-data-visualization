@@ -1,25 +1,23 @@
 {% extends "card.njk" %}
 
 {% block content %}
-  <div class="ll-card--{{ item.type }}__date">
-    <strong>{{ item.date_long }}</strong>
-  </div>
-  <div class="ll-card--{{ item.type }}__title">
-    <h3>
+  <header class="ll-card__header ll-card--{{ item.type }}__header">
+    <time class="ll-card__date ll-card--{{ item.type }}__date" datetime="{{ item.date_long }}">
+      {{ item.date_long }}
+    </time>
+    <h3 class="ll-card__title ll-card--{{ item.type }}__title">
       {% if item.sourceurl %}
-        <a href="{{item.sourceurl}}">
+        <a href="{{item.sourceurl}}" rel="nofollow">
           {{ item.headline }}
         </a>
       {% else %}
         {{ item.headline }}
       {% endif %}
     </h3>
-  </div>
-  {% if item.text %}
-    <div class="ll-card--{{ item.type }}__content">
-      <p>
-        {{ item.text }}
-      </p>
-    </div>
-  {% endif %}
+  </header>
+  {# {% if item.text %}
+    <p class="ll-card--{{ item.type }}__content">
+      {{ item.text }}
+    </p>
+  {% endif %} #}
 {% endblock %}

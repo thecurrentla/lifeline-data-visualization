@@ -1,17 +1,16 @@
 .ll-header,
 .ll-footer {
 	text-align: center;
-	padding: 1rem 1.5rem;
+	padding: 1rem;
+
+	> *:not(.visually-hidden) + * {
+		margin-top: var(--ll-flow-spacing, 0.5rem);
+	}
 }
 .ll-header {
 	margin: 3rem auto 0;
 }
-
 .ll-footer {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: center;
-	align-items: flex-end;
 	margin: 0 auto 3rem;
 }
 
