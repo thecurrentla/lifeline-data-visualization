@@ -1,3 +1,9 @@
+{% set css %}
+{% include "css/lifeline.css" %}
+{% endset %}
+<style>
+  {{css | safe}}
+</style>
 <section class="ll" id="ll-embed">
   <div class="ll-wrapper">
     <header class="ll-header">
