@@ -2,7 +2,7 @@
 
 {% block content %}
   <header class="ll-card__header ll-card--{{ item.type }}__header">
-    <time class="ll-card__date ll-card--{{ item.type }}__date" datetime="{{ item.date_long }}">
+    <time class="ll-card__subhead ll-card--{{ item.type }}__subhead" datetime="{{ item.date_long }}">
       {{ item.date_long }}
     </time>
     <h3 class="ll-card__title ll-card--{{ item.type }}__title">
@@ -15,9 +15,4 @@
       {% endif %}
     </h3>
   </header>
-  {# {% if item.text %}
-    <p class="ll-card--{{ item.type }}__content">
-      {{ item.text }}
-    </p>
-  {% endif %} #}
 {% endblock %}

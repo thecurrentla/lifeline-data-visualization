@@ -5,8 +5,10 @@
     <h2 class="ll-card__title ll-card--{{ item.type }}__title">
       {{ category.name }}
     </h2>
-    <strong>{{ category.total }}
-      calls</strong>
+    <div class="ll-card__subhead ll-card--{{ item.type }}__subhead">
+      {{ category.total }}
+      calls
+    </div>
   </header>
   <p class="ll-card__content ll-card--{{ item.type }}__content">
     {{ item.text }}

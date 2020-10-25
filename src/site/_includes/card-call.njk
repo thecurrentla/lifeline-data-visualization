@@ -12,9 +12,9 @@
       <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
     </h3>
 
-    <a class="ll-share-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
-      <i class="fa fa-link" aria-hidden="true">🔗</i>
-      <span class="sr-only visually-hidden">Share</span>
+    <a class="ll-anchor-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
+      <i class="fa fa-link" aria-hidden="true"></i>
+      <span class="sr-only visually-hidden">Link</span>
     </a>
   </header>
   <p class="ll-card__content ll-card--{{ item.type }}__content">
