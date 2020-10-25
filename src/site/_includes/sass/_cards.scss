@@ -94,7 +94,7 @@ $card-offset: 5%;
 	line-height: 1.2;
 }
 .ll-card__subhead {
-	font-size: 0.9em;
+	line-height: 1.2;
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -117,7 +117,7 @@ $card-offset: 5%;
 	--ll-flow-spacing: 1rem;
 }
 .ll-card--intro__subhead {
-	font-size: 1.1em;
+	font-size: 1.125rem;
 	--ll-flow-spacing: 0.25rem;
 }
 .ll-card--intro__content {
@@ -136,7 +136,7 @@ $card-offset: 5%;
 	font-weight: bold;
 }
 .ll-card--news__subhead {
-	font-size: 0.9em;
+	font-size: 0.9rem;
 }
 
 .ll-card--call {

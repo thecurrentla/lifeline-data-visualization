@@ -9,7 +9,7 @@
             Parish</small>
         </div>
       {% endif %}
-      <time class="date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
+      <time class="ll-card-date" datetime="{{ item.date_datetime }}">{{ datetime }}</time>
     </h3>
 
     <a class="ll-anchor-link" href="#{{ card_id | slug }}" data-title="211 call from {{ item.parish }} on {{ item.date_long }}" data-url="#{{ card_id | slug }}">
