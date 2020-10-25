@@ -15,6 +15,7 @@ button {
 	small {
 		display: block;
 		font-size: 75%;
+		pointer-events: none;
 	}
 
 	color: $text-color;
